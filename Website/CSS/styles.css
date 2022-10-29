@@ -1,0 +1,180 @@
+:root {
+  --navItem: #00BCB4;
+  --white: #ffffff;
+}
+
+
+*::selection{
+   background-color: #c879ff;
+   color: white;
+}
+
+*::-webkit-scrollbar{
+   height: 8px;
+   width: 15px;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color: #826aed;
+}
+
+body{
+  background-color: #D8FDFE;
+}
+
+.header{
+   position: sticky;
+   top:0;
+   left:0;
+   right:0;
+   background-color: white;
+   z-index: 1000;
+   box-shadow:  0 10px 15px rgba(0,0,0,0.2);
+}
+
+.header .flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:30px;
+  max-width: 1200px;
+  margin:0 auto;
+  position: relative;
+}
+
+.header .flex .logo{
+  font-size: 30px;
+  color: #00BCB4;
+}
+
+.header .flex .navbar{
+  margin-left: 30%
+}
+
+.header .flex .navbar.active{
+  display: block;
+}
+
+.header .flex .navbar .navbar-ul{
+   list-style: none;
+   text-decoration: none;
+}
+
+.header .flex .navbar .navbar-ul .navbar-li{
+   float: left;
+   position: relative;
+
+}
+
+.header .flex .navbar .navbar-ul .navbar-li a{
+   font-size: 22px;
+   padding: 10px 25px;
+   display: block;
+   color:#595959;
+}
+
+.header .flex .navbar .navbar-ul .navbar-li a:hover{
+   background-color: #00BCB4;
+   text-decoration: underline;
+   color: white;
+}
+
+.header .flex .icons > *{
+   font-size: 25px;
+   margin-left: 10px;
+   color: black;
+   cursor: pointer;
+}
+
+#menu-btn{
+   display: none;
+}
+
+.header .flex .account.active{
+  display: block;
+}
+
+
+.header .flex .account{
+  position: absolute;
+  top:120%;
+  right:30px;
+  width: 25%;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+  background-color: white;
+  padding: 10px;
+  text-align: left;
+  border: 3px solid black;
+  display: none;
+  animation: fadeIn .2s linear;
+}
+.header .flex .account-options{
+  text-align: center;
+}
+
+.header .flex .account p{
+  font-size: 20px;
+  color: black;
+  line-height: 1.5;
+}
+
+.header .flex .account p a{
+   color:#00BCB4;
+}
+
+/* Responsiveness  */
+@media (max-width:1000px){
+  .header .flex .navbar{
+    margin-left: 15%
+  }
+
+  .header .flex .navbar .navbar-ul .navbar-li a{
+     font-size: 18px;
+  }
+  .header .flex .icons > *{
+     font-size: 20px;
+  }
+}
+
+@media (max-width:760px){
+  #menu-btn{
+      display: inline-block;
+   }
+   .header .flex .navbar.active{
+     display: block;
+   }
+
+   .header .flex .navbar{
+      position: absolute;
+      margin-left: 0;
+      top:99%;
+      left:0;
+      right:0;
+      background-color: white;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      display: none;
+      width: 100%
+   }
+
+   .header .flex .navbar .navbar-ul .navbar-li{
+     width: 100%;
+   }
+   .header .flex .navbar .navbar-ul .navbar-li a{
+     margin-right: 10%
+   }
+
+    .header .flex .account{
+     width: 40%;
+   }
+
+   .header .flex .account p{
+     padding-bottom: 5px;
+     font-size: 15px;
+   }
+}
