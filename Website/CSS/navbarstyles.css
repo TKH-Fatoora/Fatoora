@@ -24,6 +24,7 @@
 
 body{
   background-color: #D8FDFE;
+  font-family: "Cairo", sans-serif;
 }
 
 .header{
@@ -40,15 +41,29 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:30px;
+  padding:20px;
   max-width: 1200px;
   margin:0 auto;
   position: relative;
 }
 
 .header .flex .logo{
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .flex .logo-icon{
+  width: 50px;
+  height: 50px;
+  fill: #00BCB4;
+}
+
+.header .flex .logo-text{
   font-size: 30px;
   color: #00BCB4;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .header .flex .navbar{
@@ -75,6 +90,7 @@ body{
    padding: 10px 25px;
    display: block;
    color:#595959;
+   text-decoration: none;
 }
 
 .header .flex .navbar .navbar-ul .navbar-li a:hover{
@@ -128,16 +144,32 @@ body{
 }
 
 /* Responsiveness  */
-@media (max-width:1000px){
+@media (max-width:1120px){
+
   .header .flex .navbar{
     margin-left: 15%
   }
 
   .header .flex .navbar .navbar-ul .navbar-li a{
-     font-size: 18px;
+     font-size: 20px;
+     padding: 15px 15px;
   }
   .header .flex .icons > *{
      font-size: 20px;
+  }
+
+  .header .flex .logo-icon{
+    width: 40px;
+    height: 40px;
+    fill: #00BCB4;
+  }
+
+  .header .flex .logo-text{
+    font-size: 25px;
+    color: #00BCB4;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 }
 
