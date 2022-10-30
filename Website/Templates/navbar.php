@@ -77,4 +77,4 @@
     </div>
 </header>
 
-<script src="nav.js" type="text/javascript"></script>
+<script src="Script/nav.js" type="text/javascript"></script>
