@@ -1,5 +1,5 @@
 <script src="https://kit.fontawesome.com/4a82e10df4.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="navbarstyles.css">
+<link rel="stylesheet" href="CSS/navbarstyles.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
 
 
