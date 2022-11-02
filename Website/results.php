@@ -25,33 +25,33 @@ include 'Templates/navbar.php';
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Communication</p></td>
-              <td class="tableitem"><p class="itemtext">5</p></td>
-              <td class="tableitem"><p class="itemtext">$375.00</p></td>
+              <td class="itemtext">Communication</td>
+              <td class="itemtext">5</td>
+              <td class="itemtext">$375.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Asset Gathering</p></td>
-              <td class="tableitem"><p class="itemtext">3</p></td>
-              <td class="tableitem"><p class="itemtext">$225.00</p></td>
+              <td class="itemtext">Asset Gathering</td>
+              <td class="itemtext">3</td>
+              <td class="itemtext">$225.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Design Development</p></td>
-              <td class="tableitem"><p class="itemtext">5</p></td>
-              <td class="tableitem"><p class="itemtext">$375.00</p></td>
+              <td class="itemtext">Design Development</td>
+              <td class="itemtext">5</td>
+              <td class="itemtext">$375.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Animation</p></td>
-              <td class="tableitem"><p class="itemtext">20</p></td>
-              <td class="tableitem"><p class="itemtext">$1500.00</p></td>
+              <td class="itemtext">Animation</td>
+              <td class="itemtext">20</td>
+              <td class="itemtext">$1500.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Animation Revisions</p></td>
-              <td class="tableitem"><p class="itemtext">10</p></td>
-              <td class="tableitem"><p class="itemtext">$750.00</p></td>
+              <td class="itemtext">Animation Revisions</td>
+              <td class="itemtext">10</td>
+              <td class="itemtext">$750.00</td>
             </tr>
 
 
@@ -71,7 +71,6 @@ include 'Templates/navbar.php';
               <td class="Rate"><h2>Total</h2></td>
               <td class="payment"><h2>$3,644.25</h2></td>
             </tr>
-
           </table>
         </div>
         <div class="box">
@@ -86,34 +85,35 @@ include 'Templates/navbar.php';
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Communication</p></td>
-              <td class="tableitem"><p class="itemtext">5</p></td>
-              <td class="tableitem"><p class="itemtext">$375.00</p></td>
+              <td class="itemtext">Communication</td>
+              <td class="itemtext">5</td>
+              <td class="itemtext">$375.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Asset Gathering</p></td>
-              <td class="tableitem"><p class="itemtext">3</p></td>
-              <td class="tableitem"><p class="itemtext">$225.00</p></td>
+              <td class="itemtext">Asset Gathering</td>
+              <td class="itemtext">3</td>
+              <td class="itemtext">$225.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Design Development</p></td>
-              <td class="tableitem"><p class="itemtext">5</p></td>
-              <td class="tableitem"><p class="itemtext">$375.00</p></td>
+              <td class="itemtext">Design Development</td>
+              <td class="itemtext">5</td>
+              <td class="itemtext">$375.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Animation</p></td>
-              <td class="tableitem"><p class="itemtext">20</p></td>
-              <td class="tableitem"><p class="itemtext">$1500.00</p></td>
+              <td class="itemtext">Animation</td>
+              <td class="itemtext">20</td>
+              <td class="itemtext">$1500.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Animation Revisions</p></td>
-              <td class="tableitem"><p class="itemtext">10</p></td>
-              <td class="tableitem"><p class="itemtext">$750.00</p></td>
+              <td class="itemtext">Animation Revisions</td>
+              <td class="itemtext">10</td>
+              <td class="itemtext">$750.00</td>
             </tr>
+
 
             <tr class="tabletitle">
               <td></td>
@@ -131,7 +131,6 @@ include 'Templates/navbar.php';
               <td class="Rate"><h2>Total</h2></td>
               <td class="payment"><h2>$3,644.25</h2></td>
             </tr>
-
           </table>
         </div>
         <div class="box">
@@ -146,33 +145,33 @@ include 'Templates/navbar.php';
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Communication</p></td>
-              <td class="tableitem"><p class="itemtext">5</p></td>
-              <td class="tableitem"><p class="itemtext">$375.00</p></td>
+              <td class="itemtext">Communication</td>
+              <td class="itemtext">5</td>
+              <td class="itemtext">$375.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Asset Gathering</p></td>
-              <td class="tableitem"><p class="itemtext">3</p></td>
-              <td class="tableitem"><p class="itemtext">$225.00</p></td>
+              <td class="itemtext">Asset Gathering</td>
+              <td class="itemtext">3</td>
+              <td class="itemtext">$225.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Design Development</p></td>
-              <td class="tableitem"><p class="itemtext">5</p></td>
-              <td class="tableitem"><p class="itemtext">$375.00</p></td>
+              <td class="itemtext">Design Development</td>
+              <td class="itemtext">5</td>
+              <td class="itemtext">$375.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Animation</p></td>
-              <td class="tableitem"><p class="itemtext">20</p></td>
-              <td class="tableitem"><p class="itemtext">$1500.00</p></td>
+              <td class="itemtext">Animation</td>
+              <td class="itemtext">20</td>
+              <td class="itemtext">$1500.00</td>
             </tr>
 
             <tr class="rowitem">
-              <td class="tableitem"><p class="itemtext">Animation Revisions</p></td>
-              <td class="tableitem"><p class="itemtext">10</p></td>
-              <td class="tableitem"><p class="itemtext">$750.00</p></td>
+              <td class="itemtext">Animation Revisions</td>
+              <td class="itemtext">10</td>
+              <td class="itemtext">$750.00</td>
             </tr>
 
 
@@ -194,6 +193,7 @@ include 'Templates/navbar.php';
             </tr>
           </table>
         </div>
+
       </div>
     </section>
     <div class="done">
