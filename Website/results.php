@@ -193,7 +193,6 @@ include 'Templates/navbar.php';
             </tr>
           </table>
         </div>
-
       </div>
     </section>
     <div class="done">
