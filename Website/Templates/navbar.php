@@ -48,7 +48,7 @@
           <li class="navbar-li" ><a href='Home.php'>Home</a></li>
           <li class="navbar-li" ><a href='scan.php'>Scan</a></li>
           <li class="navbar-li" ><a href='Receipts.php'>Receipts</a></li>
-          <li class="navbar-li" ><a href='Contact.php'>Contact Us</a></li>
+          <li class="navbar-li" ><a href='contact_us.php'>Contact Us</a></li>
         </ul>
       </nav>
 
