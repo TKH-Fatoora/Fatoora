@@ -42,10 +42,12 @@
 .tabletitle{
   font-size: .5em;
   background: #EEE;
+  margin-left: 2%;
 }
 
 .rowitem{
   border-bottom: 1px solid #EEE;
+  margin-left: 2%;
 }
 
 .item{
