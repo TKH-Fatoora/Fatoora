@@ -1,32 +1,38 @@
-input[type=text],
-select {
+.form_template{
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+input[type=text], input[type=email]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 15px;
     box-sizing: border-box;
+    font-size: 18px
 }
 
 input[type=submit] {
     width: 100%;
-    background-color: #4CAF50;
+    background-color: #ff57a2;
     color: white;
-    padding: 14px 20px;
+    padding: 15px 20px;
     margin: 8px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #f72585;
 }
-
-.form_template {
-    border-radius: 5px;
-    padding: 20px;
+label{
+  font-size: 20px
 }
 
 textarea {
@@ -34,18 +40,14 @@ textarea {
     height: 150px;
     padding: 12px 20px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
     background-color: white;
     resize: none;
+    font-size: 18px
 }
 
 #page_title {
     text-align: center;
-}
-
-.horizon_line {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    margin-bottom: 0
 }
