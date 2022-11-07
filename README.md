@@ -1,2 +1,2 @@
 # Fatoora
-Fatoora system for Receipt Scanning
+Fatoora system for expense tracking
