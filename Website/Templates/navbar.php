@@ -1,3 +1,9 @@
+<?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+ ?>
+
 <script src="https://kit.fontawesome.com/4a82e10df4.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="CSS/navbar_styles.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
@@ -67,10 +73,10 @@
 
       <!-- logged in account menu -->
       <div class="account">
-        <p>Name: <span><!--php--></span></p>
-        <p>Email: <span><!--php--></span></p>
+        <p>Name: <span><?php echo htmlspecialchars($_SESSION['user_name']); ?></span></p>
+        <p>Email: <span><?php echo htmlspecialchars($_SESSION['user_email']); ?></span></p>
 
-        <p class="account-options"><a href='Profile.php'>Edit Account</a> | <a href="Logout.php">Log out</a></p>
+        <p class="account-options"><a href='Profile.php'>Edit Account</a> | <a href="logout.php">Log out</a></p>
 
       </div>
 
