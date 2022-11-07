@@ -1,6 +1,9 @@
 <?php
-include 'Templates/navbar.php';
+// connection to databse
+@include 'config.php';
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -9,6 +12,7 @@ include 'Templates/navbar.php';
     <title>Expense</title>
   </head>
   <body>
+    <?php include 'Templates/navbar.php';?>
     <section class="add">
 
       <!-- add new Expense -->
