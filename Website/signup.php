@@ -1,48 +1,3 @@
-<?php
-
-include 'Templates/config.php';
-
-if(isset($_POST['submit'])){
-  // These two functions are important for extra security purpose in the signup form:
-  // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
-  // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
-  // passwords md5 hashing for an extra layer of security for the users
-
-  // fetch the username, email, password & confirm password of the user
-   $filter_name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-   $name = mysqli_real_escape_string($conn, $filter_name);
-   $filter_email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-   $email = mysqli_real_escape_string($conn, $filter_email);
-   $filter_pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-   $pass = mysqli_real_escape_string($conn, md5($filter_pass));
-   $filter_cpass = filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING);
-   $cpass = mysqli_real_escape_string($conn, md5($filter_cpass));
-   // $filter_dob = filter_var($_POST['DOB'], FILTER_SANITIZE_STRING);
-   $dob = mysqli_real_escape_string($conn, $_POST['DOB']);
-
- // _____________________________________________________________________________
-
-    // select all users that have the same email that the user just entered from the users table in the database, if possible
-    $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
-
-    // if the rows returned are more than 0, that means that this email was used already
-    if(mysqli_num_rows($select_users) > 0){
-          $message[] = 'User already exists!'; // store notification message
-       }else{
-         // if the 2 paaswords entered do not match
-          if($pass != $cpass){
-             $message[] = 'Passwords do not match!'; // store notification message
- // _____________________________________________________________________________
-          }else{
-            // if all input was valid, insert these values into the users table in the databsae
-             mysqli_query($conn, "INSERT INTO `users`(name, email, password, birthdate) VALUES('$name', '$email', '$pass', '$dob')") or die('query failed');
-             $message[] = 'Registered successfully!'; // store notification message
-             // redirect user to the login page
-             header('location:login.php');
-          }
-       }
- }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,52 +8,32 @@ if(isset($_POST['submit'])){
   <title>Sign-Up Page</title>
 </head>
 <body>
-  <!--  ______________________________________________________________________ -->
-
-    <?php
-    // if there is something stored in the message array then:
-    if(isset($message)){
-      // loop over each message
-       foreach($message as $message){
-         // print out the messages as follows:
-          echo '
-          <div class="message">
-             <span>'.$message.'</span>
-             <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-          </div>
-          ';
-       }
-    }
-    ?>
-
-<!--  ______________________________________________________________________ -->
   <div class="login-wrapper">
-    <form action="signup.php" method='post' class="form">
+    <form action="" class="form">
       <img src="images/avatar.png" alt="">
       <h2>Sign-Up</h2>
       <div class="input-group">
-        <input type="text" name="name" id="loginUser" required>
+        <input type="text" name="loginUser" id="loginUser" required>
         <label for="loginUser">Name</label>
       </div>
       <div class="input-group">
-        <input type="email" name="email" id="loginEmail" required>
+        <input type="email" name="loginEmail" id="loginEmail" required>
         <label for="loginEmail">Email</label>
       </div>
       <div class="input-group">
-        <input type="password" name="password" id="loginPassword" required>
+        <input type="password" name="loginPassword" id="loginPassword" required>
         <label for="loginPassword">Password</label>
       </div>
       <div class="input-group">
-        <input type="password" name="confirmPassword" id="loginCPassword" required>
+        <input type="password" name="loginCPassword" id="loginCPassword" required>
         <label for="loginPassword">Confirm Password</label>
       </div>
       <div class="input-group">
-        <input type="date" name="DOB" id="loginDOB" required>
+        <input type="date" name="loginDOB" id="loginDOB" required>
         <label for="loginDOB">Date of Birth</label>
       </div>
-      <input type="submit" name="submit" value="Sign Up" class="submit-btn">
-      <br>
-      <span class="forgot-pw">Already Have an account? <a href="login.php">Log In</a> </span>
+      <input type="submit" value="Login" class="submit-btn">
+      <a href="signup.php" class="forgot-pw">New Here? Sign Up</a>
     </form>
   </div>
 </body>
