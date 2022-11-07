@@ -5,7 +5,7 @@ include 'Templates/navbar.php';
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="CSS/expensestyles.css">
+    <link rel="stylesheet" href="CSS/expense_styles.css">
     <title>Expense</title>
   </head>
   <body>

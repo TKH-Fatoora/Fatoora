@@ -1,5 +1,5 @@
 <script src="https://kit.fontawesome.com/4a82e10df4.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="CSS/navbarstyles.css">
+<link rel="stylesheet" href="CSS/navbar_styles.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
 
 
@@ -45,10 +45,10 @@
         <!-- Navigation Bar Unordered List -->
         <ul class="navbar-ul">
           <!-- Navigation Bar List Items -->
-          <li class="navbar-li" ><a href='Home.php'>Home</a></li>
+          <li class="navbar-li" ><a href='home.php'>Home</a></li>
           <li class="navbar-li" ><a href='expense.php'>Add Expense</a></li>
-          <li class="navbar-li" ><a href='History.php'>History</a></li>
-          <li class="navbar-li" ><a href='History.php'>Statistics</a></li>
+          <li class="navbar-li" ><a href='history.php'>History</a></li>
+          <li class="navbar-li" ><a href='statistics.php'>Statistics</a></li>
           <li class="navbar-li" ><a href='contact_us.php'>Contact Us</a></li>
         </ul>
       </nav>
