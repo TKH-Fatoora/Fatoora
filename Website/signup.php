@@ -9,15 +9,10 @@ if(isset($_POST['submit'])){
   // passwords md5 hashing for an extra layer of security for the users
 
   // fetch the username, email, password & confirm password of the user
-   $filter_name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-   $name = mysqli_real_escape_string($conn, $filter_name);
-   $filter_email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
-   $email = mysqli_real_escape_string($conn, $filter_email);
-   $filter_pass = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-   $pass = mysqli_real_escape_string($conn, md5($filter_pass));
-   $filter_cpass = filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING);
-   $cpass = mysqli_real_escape_string($conn, md5($filter_cpass));
-   // $filter_dob = filter_var($_POST['DOB'], FILTER_SANITIZE_STRING);
+   $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
+   $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
+   $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
+   $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
    $dob = mysqli_real_escape_string($conn, $_POST['DOB']);
 
  // _____________________________________________________________________________
@@ -55,7 +50,7 @@ if(isset($_POST['submit'])){
 <body>
 
   <?php include 'Templates/notification.php' ?>
-  
+
   <div class="login-wrapper">
     <form action="signup.php" method='post' class="form">
       <img src="images/avatar.png" alt="">

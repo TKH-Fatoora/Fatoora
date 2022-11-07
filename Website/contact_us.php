@@ -1,5 +1,5 @@
 <?php
-include 'Templates/navbar.php';
+include 'Templates/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -11,15 +11,14 @@ include 'Templates/navbar.php';
 </head>
 
 <body>
+  <?php include 'Templates/navbar.php';?>
     <div>
     <h1 id="page_title">Contact us</h1>
     <hr class="horizon_line">
     </div>
-    
 
     <div class="form_template">
         <form>
-    
 
             <label>Name:</label>
             <input type="text" id="name" name="name">
@@ -36,11 +35,7 @@ include 'Templates/navbar.php';
             <input type="submit" value="Submit">
         </form>
     </div>
-
+    <?php include 'Templates/footer.php';?>
 </body>
 
 </html>
-
-<?php
-include 'Templates/footer.php';
-?>
