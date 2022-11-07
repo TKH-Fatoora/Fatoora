@@ -9,9 +9,9 @@
       <div class="box">
           <h3 class="footerSubT">Quick links</h3>
           <a href="home.php">Home</a>
-          <a href="scan.php">Scan</a>
-          <a href="history.php">Reciepts</a>
-          <a href="contactus.php">Contact Us</a>
+          <a href="history.php">History</a>
+          <a href="statistics.php">Statistics</a>
+          <a href="contact_us.php">Contact Us</a>
       </div>
 
       <!-- extra links -->
