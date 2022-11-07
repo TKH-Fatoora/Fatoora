@@ -46,8 +46,9 @@
         <ul class="navbar-ul">
           <!-- Navigation Bar List Items -->
           <li class="navbar-li" ><a href='Home.php'>Home</a></li>
-          <li class="navbar-li" ><a href='scan.php'>Scan</a></li>
-          <li class="navbar-li" ><a href='Receipts.php'>Receipts</a></li>
+          <li class="navbar-li" ><a href='expense.php'>Add Expense</a></li>
+          <li class="navbar-li" ><a href='History.php'>History</a></li>
+          <li class="navbar-li" ><a href='History.php'>Statistics</a></li>
           <li class="navbar-li" ><a href='contact_us.php'>Contact Us</a></li>
         </ul>
       </nav>

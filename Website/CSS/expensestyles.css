@@ -1,0 +1,67 @@
+.add{
+  margin: 15px 0;
+}
+
+.add .expenses{
+  max-width: 700px;
+  border-radius: 15px;
+  background-color: white;
+  border: 4px dashed black;
+  text-align: center;
+  padding: 5px 15px;
+  margin: 0 auto;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+.add .expenses h3{
+  font-size: 30px;
+  text-trans.expenses: uppercase;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.add .expenses .box{
+   width: 100%;
+   margin:10px 0;
+   font-size: 19px;
+   color: black;
+   border-radius: 15px;
+   background-color: #f2edff;
+   padding:1rem;
+   border:3px solid black;
+}
+
+.add .expenses textarea{
+  height: 200px;
+  resize: none;
+}
+
+.add .expenses select{
+   width: 100%;
+   border:3px solid black;
+   padding:15px;
+   font-size: 19px;
+   color: black;
+   border-radius:15px;
+   margin:10px 0;
+   text-align: left;
+   background-color: #f2edff
+}
+
+.btn{
+  margin: 0 auto;
+  width: 30%;
+  padding: 5px 0;
+  border: 2px solid black;
+  background: #ff57a2;
+  border-radius: 7px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: white;
+  font-weight: bold;
+}
+
+.btn:hover{
+  background: #f72585;
+  cursor: pointer;
+}
