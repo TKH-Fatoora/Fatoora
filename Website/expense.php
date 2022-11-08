@@ -57,7 +57,7 @@ if(isset($_POST['addExpense'])){
    // __________________________________________________________________________
 
    // if the product did not exist, insert all its data into the products table in the database
-    $insert_expense = mysqli_query($conn, "INSERT INTO `expenses`(`date`, method, category, name, amount, note, image) VALUES('$date', '$method', '$category','$name', '$amount', '$note', '$filteredName')") or die('query failed');
+    $insert_expense = mysqli_query($conn, "INSERT INTO `expenses`(UserID, `date`, method, category, name, amount, note, image) VALUES('$user_id', '$date', '$method', '$category','$name', '$amount', '$note', '$filteredName')") or die('query failed');
  // __________________________________________________________________________
 
    if(!empty($_FILES["image"]["name"]))
@@ -66,7 +66,7 @@ if(isset($_POST['addExpense'])){
        $message[] = 'image size is too large!'; // store notification message
      }else{
        if(!empty($_FILES["image"]["name"])) move_uploaded_file($_FILES["image"]["tmp_name"], $target . $filteredName);
-       $message[] = 'product added successfully!'; // store notification message
+       $message[] = 'expense added successfully!'; // store notification message
      }
    }
 
@@ -122,7 +122,7 @@ if(isset($_POST['addExpense'])){
         <input type="text" name="name" class="box" required placeholder="Please enter expense title">
 
         <!-- ammount -->
-        <input type="number" name="amount" class="box" min="0" required placeholder="Please enter price">
+        <input type="number" step="0.01" name="amount" class="box" min="0" required placeholder="Please enter price">
 
         <!-- description field-->
         <textarea name="note" class="box" cols="30" rows="10" placeholder="Please enter note"></textarea>

@@ -1,6 +1,27 @@
 <?php
-include 'Templates/navbar.php';
+
+include 'Templates/config.php';
+
+// start session
+session_start();
+
+// fetching the value for the user id
+$user_id = $_SESSION['user_id'];
+
+// _____________________________________________________________________________
+
+// if user id is not set, then:
+if(!isset($user_id)){
+  // redirect user to log in again
+   header('location:login.php');
+};
+
+
+
+
+
  ?>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -10,13 +31,33 @@ include 'Templates/navbar.php';
     <title>History</title>
   </head>
   <body>
+
+    <?php include 'Templates/navbar.php'; ?>
+    <?php include 'Templates/notification.php'; ?>
+
+<!-- _______________________________________________________________________ -->
+
     <section class="results">
       <h1>History</h1>
       <div class="container">
+
+<!-- _______________________________________________________________________ -->
+
+        <?php
+        $select_user_expenses = mysqli_query($conn, "SELECT DISTINCT `date` FROM `expenses` WHERE UserID = '$user_id'") or die('query failed');
+
+        // if the rows returned are more than 0, then:
+        if(mysqli_num_rows($select_user_expenses) > 0){
+          // Return an associative array of the user's data
+           while($date = mysqli_fetch_assoc($select_user_expenses)){
+         ?>
+<!-- _______________________________________________________________________ -->
+
         <div class="box">
           <div class="name">
-            <h2>07-11-2022</h2>
+            <h2><?php echo $date['date']; ?></h2>
           </div>
+
           <table class="table">
             <thead class="tabletitle">
               <th>Expense Title</th>
@@ -24,55 +65,54 @@ include 'Templates/navbar.php';
               <th>Method</th>
               <th>Price</th>
             </thead>
+<!-- _______________________________________________________________________ -->
+            <?php
+            $expense_date = $date["date"];
+            $select_date_expenses = mysqli_query($conn, "SELECT * FROM `expenses` WHERE UserID = '$user_id' AND `date` = '$expense_date' ") or die('query failed');
 
+            $subTotal = 0;
+
+
+            // if the rows returned are more than 0, then:
+            if(mysqli_num_rows($select_date_expenses) > 0){
+              // Return an associative array of the user's data
+               while($expense = mysqli_fetch_assoc($select_date_expenses)){
+             ?>
+<!-- _______________________________________________________________________ -->
             <tr class="rowitem">
-              <td class="itemtext">Communication</td>
-              <td class="itemtext">food</td>
-              <td class="itemtext">cash</td>
-              <td class="itemtext">$375.00</td>
+              <td class="itemtext"><?php echo htmlspecialchars($expense['name']); ?></td>
+              <td class="itemtext"><?php echo htmlspecialchars($expense['category']); ?></td>
+              <td class="itemtext"><?php echo htmlspecialchars($expense['method']); ?></td>
+              <td class="itemtext"><?php echo htmlspecialchars('$'.$expense['amount']); ?></td>
             </tr>
 
-            <tr class="rowitem">
-              <td class="itemtext">Asset Gathering</td>
-              <td class="itemtext">coffee</td>
-              <td class="itemtext">credit</td>
-              <td class="itemtext">$225.00</td>
-            </tr>
-
-            <tr class="rowitem">
-              <td class="itemtext">Design Development</td>
-              <td class="itemtext">transportation</td>
-              <td class="itemtext">$debit</td>
-              <td class="itemtext">$375.00</td>
-            </tr>
-
-            <tr class="rowitem">
-              <td class="itemtext">Animation</td>
-              <td class="itemtext">others</td>
-              <td class="itemtext">pre-paid</td>
-              <td class="itemtext">$1500.00</td>
-            </tr>
-
-            <tr class="rowitem">
-              <td class="itemtext">Animation Revisions</td>
-              <td class="itemtext">food</td>
-              <td class="itemtext">cash</td>
-              <td class="itemtext">$750.00</td>
-            </tr>
-
+<!-- _______________________________________________________________________ -->
+            <?php
+            $subTotal += $expense['amount'];
+                }
+              }
+              ?>
+<!-- _______________________________________________________________________ -->
             <tr class="tabletitle">
               <td></td>
               <td></td>
               <td><h3>Total</h3></td>
-              <td><h3>$3,644.25</h3></td>
+              <td><h3><?php echo htmlspecialchars('$'.$subTotal); ?></h3></td>
             </tr>
           </table>
         </div>
+
+<!-- _______________________________________________________________________ -->
+        <?php
+              }
+          }else{ //if there were no orders returned, print out the empty statement?>
+              <p class="empty">No expenses yet!</p>
+        <?php
+          }
+        ?>
+<!-- _______________________________________________________________________ -->
       </div>
     </section>
+    <?php include 'Templates/footer.php'; ?>
   </body>
 </html>
-
- <?php
-include 'Templates/footer.php';
-  ?>

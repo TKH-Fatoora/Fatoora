@@ -38,46 +38,59 @@ if(isset($_POST['submit'])){
 
     }else{
       // insert new message in the message table in the databse
-      mysqli_query($conn, "INSERT INTO `message`(UserID, email, subject,  content) VALUES('1', '$email', '$subject', '$content')") or die('query failed');
+      mysqli_query($conn, "INSERT INTO `message`(UserID, email, subject,  content) VALUES('$user_id', '$email', '$subject', '$content')") or die('query failed');
       $message[] = 'Message sent successfully!'; // store notification message
     }
 }
 ?>
 
+<!-- _______________________________________________________________________ -->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<head>
-    <meta charset="utf-8">
-    <title>Contact Us</title>
-    <link rel="stylesheet"  href="CSS/contact_us.css">
-</head>
+  <head>
 
-<body>
+      <meta charset="utf-8">
+      <title>Contact Us</title>
+      <link rel="stylesheet"  href="CSS/contact_us.css">
 
-  <?php include 'Templates/notification.php' ?>
-  <?php include 'Templates/navbar.php';?>
+  </head>
+  <body>
 
-    <div>
-    <h1 id="page_title">Contact us</h1>
-    </div>
+<!-- _______________________________________________________________________ -->
 
-    <div class="form_template">
-        <form action="contact_us.php" method="POST">
+    <?php include 'Templates/notification.php' ?>
+    <?php include 'Templates/navbar.php';?>
 
-            <label>Email:</label>
-            <input type="email" id="email" name="email" required>
+<!-- _______________________________________________________________________ -->
 
-            <label>Subject</label>
-            <input type="text" id="subject" name="subject" required>
+      <div>
+      <h1 id="page_title">Contact us</h1>
+      </div>
 
-            <label>Message:</label>
-            <textarea required id="message" name="message" cols="30" rows="10"></textarea>
+<!-- _______________________________________________________________________ -->
 
-            <input type="submit" name="submit" value="Submit">
-        </form>
-    </div>
-    <?php include 'Templates/footer.php';?>
-</body>
+      <div class="form_template">
+          <form action="contact_us.php" method="POST">
 
+              <label>Email:</label>
+              <input type="email" id="email" name="email" required>
+
+              <label>Subject</label>
+              <input type="text" id="subject" name="subject" required>
+
+              <label>Message:</label>
+              <textarea required id="message" name="message" cols="30" rows="10"></textarea>
+
+              <input type="submit" name="submit" value="Submit">
+          </form>
+      </div>
+
+<!-- _______________________________________________________________________ -->
+
+      <?php include 'Templates/footer.php';?>
+
+<!-- _______________________________________________________________________ -->
+  </body>
 </html>

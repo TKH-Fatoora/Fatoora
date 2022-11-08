@@ -29,10 +29,13 @@ if(isset($_POST['submit'])){
       $row = mysqli_fetch_assoc($select_users);
 
 // _____________________________________________________________________________
+      $cookie_name = "uid";
+      $cookie_value = md5($row['UserID']);
+      setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+// _____________________________________________________________________________
 
       // if the user is an admin, save his credetials in the session and redirect him to the admin page
       if($row['type'] == 'admin'){
-         $_COOKIE['uid'] = md5($row['UserID']);
          $_SESSION['admin_name'] = $row['name'];
          $_SESSION['admin_email'] = $row['email'];
          $_SESSION['admin_id'] = $row['id'];
@@ -42,11 +45,10 @@ if(isset($_POST['submit'])){
 
       // if the user is not an admin, save his credetials in the session and redirect him to the home page
       }elseif($row['type'] == 'user'){
-         $_COOKIE['uid'] = md5($row['UserID']);
          $_SESSION['user_name'] = $row['name'];
          $_SESSION['user_email'] = $row['email'];
          $_SESSION['user_id'] = $row['UserID'];
-         header('location:expense.php');
+         header('location:home.php');
       }
 
 // _____________________________________________________________________________

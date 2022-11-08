@@ -119,6 +119,7 @@ body{
   top:120%;
   right:30px;
   width: 25%;
+  min-width: 270px;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgba(0,0,0,0.2);
   background-color: white;
@@ -140,6 +141,10 @@ body{
 
 .header .flex .account p a{
    color:#00BCB4;
+}
+
+.header .flex .account .acc-info{
+  color: #f72585;
 }
 
 /* Responsiveness  */

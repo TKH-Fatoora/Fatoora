@@ -56,3 +56,16 @@
   font-size: 15px;
   padding-left: 5px;
 }
+
+.empty{
+   padding:20px;
+   font-size: 20px;
+   color: #f72585;
+   border:2px solid black;
+   box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+   text-align: center;
+   background-color: white;
+   border-radius: 15px;
+   text-transform: capitalize;
+   box-sizing: border-box;
+}
