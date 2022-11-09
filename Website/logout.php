@@ -4,8 +4,6 @@
 
 // start  session
 session_start();
-// unset cookie
-unset($_COOKIE['uid']);
 // free all session variables
 session_unset();
 // close session
