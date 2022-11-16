@@ -5,6 +5,9 @@
 // start admin session
 session_start();
 
+//Reset the variable
+if(isset($_SESSION['selected_user_id'])) { unset($_SESSION['selected_user_id']); }
+
 // fetching the value for the admin id
 $admin_id = $_SESSION['admin_id'];
 
@@ -40,6 +43,15 @@ if(isset($_POST['delete_user'])){
    mysqli_query($conn, "DELETE FROM `message` WHERE UserID = '$delete_id'") or die('query failed');
    $message[] = 'User has been deleted!'; // store notification message
    header('location:adminUsers.php'); //reloads the updated page
+}
+
+// _____________________________________________________________________________
+// if the delete user button is pressed,
+if(isset($_POST['stats_user'])){
+   // fetch the id of the selected user
+   $_SESSION['selected_user_id'] = $_POST['userID'];
+
+   header('location:adminStatsPerUser.php'); //reloads the updated page
 }
 
 // _____________________________________________________________________________
@@ -96,7 +108,8 @@ if(isset($_POST['delete_user'])){
            <input type="hidden" name="userID" value="<?php echo htmlspecialchars($fetch_users['UserID']); ?>">
            <input type="submit" class="up-btn" value="Update" name="update_user">
            <br><input type="submit" class="dlt-btn" value="Delete" name="delete_user">
-           <button type="button" name="stats"> <a href="AdminStatsPerUser.php">Statistics</a> </button>
+           <input type="submit" class="dlt-btn" value="Statistics" name="stats_user">
+           <!-- <button type="button" name="stats"> <a href="AdminStatsPerUser.php">Statistics</a> </button> -->
          </form>
 
 

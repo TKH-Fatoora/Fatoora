@@ -34,10 +34,11 @@ if(isset($_POST['submit'])){
       setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 // _____________________________________________________________________________
 
+      $_SESSION['user_name'] = $row['name'];
+      $_SESSION['user_email'] = $row['email'];
+      
       // if the user is an admin, save his credetials in the session and redirect him to the admin page
       if($row['type'] == 'admin'){
-         $_SESSION['admin_name'] = $row['name'];
-         $_SESSION['admin_email'] = $row['email'];
          $_SESSION['admin_id'] = $row['UserID'];
          header('location:adminDash.php');
 
@@ -45,8 +46,6 @@ if(isset($_POST['submit'])){
 
       // if the user is not an admin, save his credetials in the session and redirect him to the home page
       }elseif($row['type'] == 'user'){
-         $_SESSION['user_name'] = $row['name'];
-         $_SESSION['user_email'] = $row['email'];
          $_SESSION['user_id'] = $row['UserID'];
          header('location:home.php');
       }
