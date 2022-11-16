@@ -1,0 +1,28 @@
+.message{
+  position: sticky;
+  top: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  z-index: 1000;
+}
+
+.message span{
+   font-size: 20px;
+   color: black;
+}
+
+.message i{
+   font-size: 25px;
+   cursor: pointer;
+   color: black;
+}
+
+.message i:hover{
+   transform: rotate(90deg);
+}

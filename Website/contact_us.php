@@ -67,8 +67,8 @@ if(isset($_POST['submit'])){
 
       <div class="form_template">
 
-        <h1 id="page_title">Contact us</h1
-          
+        <h1 id="page_title">Contact us</h1>
+
           <form action="contact_us.php" method="POST">
               <label>Email:</label>
               <input type="email" id="email" name="email" required>

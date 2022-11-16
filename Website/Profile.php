@@ -20,7 +20,6 @@ $selected_user = mysqli_query($conn, "SELECT * FROM `users` WHERE UserID = '$use
 
 $current_user = mysqli_fetch_assoc($selected_user);
 
-
 if(isset($_POST['submit'])){
   // These two functions are important for extra security purpose in the signup form:
   // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
@@ -29,33 +28,31 @@ if(isset($_POST['submit'])){
 
   // fetch the username, email, password & confirm password of the user
    $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
-   $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
    $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
    $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
-   $dob = mysqli_real_escape_string($conn, $_POST['DOB']);
+   $_SESSION['user_name'] = $name;
 
  // _____________________________________________________________________________
-
-    // select all users that have the same email that the user just entered from the users table in the database, if possible
-    $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
-
-    // if the rows returned are more than 0, that means that this email was used already
-    if(mysqli_num_rows($select_users) > 0){
-          $message[] = 'User already exists!'; // store notification message
+    if (isset($pass)){
+      // if the 2 paaswords entered do not match
+       if($pass != $cpass){
+          $message[] = 'Passwords do not match!'; // store notification message
+   // _____________________________________________________________________________
        }else{
-         // if the 2 paaswords entered do not match
-          if($pass != $cpass){
-             $message[] = 'Passwords do not match!'; // store notification message
- // _____________________________________________________________________________
-          }else{
-            // if all input was valid, insert these values into the users table in the databsae
-             mysqli_query($conn, "INSERT INTO `users`(name, email, password, birthdate) VALUES('$name', '$email', '$pass', '$dob')") or die('query failed');
-             $message[] = 'Registered successfully!'; // store notification message
-             // redirect user to the login page
-             header('location:login.php');
-          }
+         // if all input was valid, insert these values into the users table in the databsae
+          mysqli_query($conn, "UPDATE `users` SET name = '$name', password = '$pass'  WHERE UserID = '$user_id'") or die('query failed');
+          header('location:Profile.php');
        }
+    }else{
+      mysqli_query($conn, "UPDATE `users` SET name = '$name' WHERE UserID = '$user_id'") or die('query failed');
+      header('location:Profile.php');
+
+    }
+
+
  }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,10 +91,11 @@ if(isset($_POST['submit'])){
         <input type="date" name="DOB" id="loginDOB" value="<?php echo htmlspecialchars($current_user["birthdate"]) ?>" readonly>
         <label for="loginDOB">Date of Birth</label>
       </div>
-      <input type="submit" name="submit" value="Update" class="submit-btn">
-      <br>
+      <input type="submit" name="submit" value="Update" class="submit-btn"><br>
 
+      <input type="button" name="back" value="Back" class="submit-btn" id="back-btn">
     </form>
   </div>
+<script type="text/javascript" src="Scripts/back.js"></script>
 </body>
 </html>

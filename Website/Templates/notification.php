@@ -1,4 +1,7 @@
 
+<link rel="stylesheet" href="CSS/notification.css">
+
+
   <?php
   // if there is something stored in the message array then:
   if(isset($message)){
