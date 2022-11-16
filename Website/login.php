@@ -38,8 +38,8 @@ if(isset($_POST['submit'])){
       if($row['type'] == 'admin'){
          $_SESSION['admin_name'] = $row['name'];
          $_SESSION['admin_email'] = $row['email'];
-         $_SESSION['admin_id'] = $row['id'];
-         header('location:adminPage.php');
+         $_SESSION['admin_id'] = $row['UserID'];
+         header('location:adminDash.php');
 
 // _____________________________________________________________________________
 
