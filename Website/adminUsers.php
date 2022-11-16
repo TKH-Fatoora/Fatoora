@@ -18,13 +18,13 @@ if(!isset($admin_id)){
 
 // _____________________________________________________________________________
 
-// if the delete user button is pressed,
+// if the update user button is pressed,
 if(isset($_POST['update_user'])){
    // fetch the id of the selected user
    $update_id = $_POST['userID'];
 
    $type = mysqli_real_escape_string($conn, $_POST['type']);
-   // delete the selected user from the users table in the database
+   // update the selected user's privilege from the users table in the database
    mysqli_query($conn, "UPDATE `users` SET type = '$type' WHERE UserID = '$update_id'") or die('query failed');
    $message[] = 'User has been deleted!'; // store notification message
    header('location:adminUsers.php'); //reloads the updated page
