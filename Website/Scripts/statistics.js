@@ -8,7 +8,6 @@ ctotal.pop();
 const data = {
   labels: category,
   datasets: [{
-    label: 'My First Dataset',
     data: ctotal,
     backgroundColor: [
       '#FFADAD',
@@ -46,7 +45,6 @@ mtotal.pop();
 const data2 = {
   labels: method,
   datasets: [{
-    label: 'My First Dataset',
     data: mtotal,
     backgroundColor: [
       // '#FFADAD',

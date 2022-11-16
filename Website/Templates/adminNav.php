@@ -56,7 +56,7 @@ if (!isset($_SESSION)) {
           <!-- Navigation Bar List Items -->
           <li class="navbar-li" ><a href='adminDash.php'>Dashboard</a></li>
           <li class="navbar-li" ><a href='adminUsers.php'>Users</a></li>
-          <li class="navbar-li" ><a href='Admin_Statistics.php'>Statistics</a></li>
+          <li class="navbar-li" ><a href='adminStatistics.php'>Statistics</a></li>
         </ul>
       </nav>
 

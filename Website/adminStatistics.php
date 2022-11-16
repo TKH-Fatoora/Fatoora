@@ -6,7 +6,7 @@
 session_start();
 
 // fetching the value for the user id
-$admin_id = $_SESSION['selected_user_id'];
+$admin_id = $_SESSION['admin_id'];
 
 // _____________________________________________________________________________
 
@@ -15,11 +15,6 @@ if(!isset($admin_id)){
   // redirect user to log in again
    header('location:login.php');
 };
-
-// fetching the value for the user id
-$selected_user_id = $_SESSION['selected_user_id'];
-
-// _____________________________________________________________________________
 ?>
 
 <!DOCTYPE html>
@@ -36,12 +31,12 @@ $selected_user_id = $_SESSION['selected_user_id'];
 
 <!--_______________________________________________________________________  -->
   <section class="statistics">
-    <h1>Statistics for UID: <span class="" ><?php echo htmlspecialchars($selected_user_id)?></span></h1>
+    <h1>All Users Statistics</span></h1>
     <div class="container">
 
       <!--_______________________________________________________________________  -->
       <?php
-      $select_user_categories = mysqli_query($conn, "SELECT SUM(amount) as ctotal, category FROM expenses WHERE UserID = '$selected_user_id' group by category;") or die('query failed');
+      $select_user_categories = mysqli_query($conn, "SELECT SUM(amount) as ctotal, category FROM expenses group by category;") or die('query failed');
 
       $category = '';
       $ctotal = '';
@@ -72,7 +67,7 @@ $selected_user_id = $_SESSION['selected_user_id'];
         <!--_______________________________________________________________________  -->
 
         <?php
-        $select_user_method = mysqli_query($conn, "SELECT SUM(amount) as mtotal, method FROM expenses WHERE UserID = '$selected_user_id' group by method;") or die('query failed');
+        $select_user_method = mysqli_query($conn, "SELECT SUM(amount) as mtotal, method FROM expenses group by method;") or die('query failed');
 
         $method = '';
         $mtotal = '';
