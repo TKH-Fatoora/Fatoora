@@ -73,22 +73,22 @@ body, html {
     <div class="w3-quarter">
       <i class="fa fa-desktop w3-margin-bottom w3-jumbo w3-center"></i>
       <p class="w3-large">Easy Content Access</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      <p>Monthly total and budgets are provided.</p>
     </div>
     <div class="w3-quarter">
       <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
       <p class="w3-large">Aesthetically Improved Charts</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      <p>Review your expenses with improved and well-organized pie charts.</p>
     </div>
     <div class="w3-quarter">
       <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
       <p class="w3-large">Reinforced Filter</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      <p>Review your transactions with more filtering options.</p>
     </div>
     <div class="w3-quarter">
       <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
       <p class="w3-large">Easier Double-Entry Booking</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      <p>Manage your savings, insurance, loans and real-estate.</p>
     </div>
   </div>
 </div>
@@ -98,11 +98,11 @@ body, html {
   <div class="w3-row-padding">
     <div class="w3-col m6">
       <h3>Forget what you actually spend daily?</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br>tempor incididunt ut labore et dolore.</p>
+      <p>Fatoora is a money managing website, where the user inputs every purchase done throughout the day<br>by classifying where the money was actually deducted through a certain account such as a Debit Card or a Prepaid Account, and classifies their purchase under certain categories ranging from Health, Transportation, Beauty, or even Social Life..</p>
       <p><a href="expense.php" class="w3-button w3-black"><i class="fa fa-th"> </i> Start now and record your Spendings</a></p>
     </div>
     <div class="w3-col m6">
-      <img class="w3-image w3-round-large" src="img/Dash.jpg" alt="Buildings" width="700" height="394">
+      <img class="w3-image w3-round-large" src="Images/lol.png" alt="View" width="700" height="394">
     </div>
   </div>
 </div>
