@@ -95,10 +95,15 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
-.forgot-pw {
+.mssg{
   color: inherit;
   text-decoration: none;
 }
+
+.mssg a{
+  color: dodgerblue;
+}
+
 
 input[type=date]:required:invalid::-webkit-datetime-edit {
     color: transparent;

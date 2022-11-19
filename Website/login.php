@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
 
       $_SESSION['user_name'] = $row['name'];
       $_SESSION['user_email'] = $row['email'];
-      
+
       // if the user is an admin, save his credetials in the session and redirect him to the admin page
       if($row['type'] == 'admin'){
          $_SESSION['admin_id'] = $row['UserID'];
@@ -49,6 +49,13 @@ if(isset($_POST['submit'])){
          $_SESSION['user_id'] = $row['UserID'];
          header('location:home.php');
       }
+
+// _____________________________________________________________________________
+      elseif($row['type'] == 'employee'){
+         $_SESSION['employee_id'] = $row['UserID'];
+         header('location:employee.php');
+      }
+
 
 // _____________________________________________________________________________
 
@@ -88,7 +95,9 @@ if(isset($_POST['submit'])){
         <label for="password">Password</label>
       </div>
       <input type="submit" name="submit" value="Login" class="submit-btn">
-      <span class="forgot-pw">New Here? <a href="signup.php">Sign Up</a> </span>
+      <span class="mssg">New Here? <a href="signup.php">Sign Up</a> </span>
+      <br><br>
+      <span class="mssg"><a href="forgetPass.php">Forgot Password?</a> </span>
     </form>
   </div>
 </body>?

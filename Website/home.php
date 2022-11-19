@@ -24,7 +24,7 @@ if(!isset($user_id)){
 <!DOCTYPE html>
 <html>
 <head>
-<title>W3.CSS Template</title>
+<title>HomePage</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -125,7 +125,7 @@ body, html {
     <span class="w3-xxlarge">10+</span>
     <br>Category for Managing your Spendings
   </div>
- 
+
 </div>
 <!-- Contact Section -->
 

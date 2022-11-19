@@ -15,13 +15,7 @@ if(!isset($user_id)){
   // redirect user to log in again
    header('location:login.php');
 };
-
-
-
-
-
  ?>
-
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

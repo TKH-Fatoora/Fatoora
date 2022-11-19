@@ -21,7 +21,7 @@ if(!isset($admin_id)){
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Statistics</title>
+    <title>All Statistics</title>
     <link rel="stylesheet" href="CSS/statistics.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
@@ -99,7 +99,9 @@ if(!isset($admin_id)){
           <!--_______________________________________________________________________  -->
 
     </div>
-    <a href="adminUsers.php"> < Back</a>
+    <div class="back">
+      <a href="adminUsers.php" class="btn">Back</a>
+    </div>
   </section>
 
     <script type="text/javascript" src="Scripts/statistics.js"></script>

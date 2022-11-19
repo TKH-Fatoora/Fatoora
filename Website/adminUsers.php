@@ -99,16 +99,16 @@ if(isset($_POST['stats_user'])){
          <p>Username: <span><?php echo htmlspecialchars($fetch_users['name']); ?></span></p>
          <p>Email: <span><?php echo htmlspecialchars($fetch_users['email']); ?></span></p>
          <form class="" action="adminUsers.php" method="post" enctype="multipart/form-data">
-           <span>User Type:</span>
+           <span class="sub">User Type:</span>
            <select class="type" name="type" required>
              <option value="user" <?php if ($fetch_users['type'] == 'user' ){?> selected <?php  }?> > user </option>
              <option value="employee" <?php if ($fetch_users['type'] == 'employee' ){?> selected <?php  }?> > employee </option>
              <option value="admin" <?php if ($fetch_users['type'] == 'admin' ){?> selected <?php  }?> > admin </option>
            </select>
            <input type="hidden" name="userID" value="<?php echo htmlspecialchars($fetch_users['UserID']); ?>">
-           <input type="submit" class="up-btn" value="Update" name="update_user">
+           <input type="submit" class="btn" value="Update" name="update_user">
            <br><input type="submit" class="dlt-btn" value="Delete" name="delete_user">
-           <input type="submit" class="dlt-btn" value="Statistics" name="stats_user">
+           <input type="submit" class="btn" value="Statistics" name="stats_user">
            <!-- <button type="button" name="stats"> <a href="AdminStatsPerUser.php">Statistics</a> </button> -->
          </form>
 

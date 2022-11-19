@@ -24,7 +24,7 @@
   border-radius: 15px;
 }
 
-.users .container .box p{
+.users .container .box p, .users .container .box .sub {
   font-size: 20px;
   color: black;
   margin-bottom: 10px;
@@ -33,4 +33,47 @@
 
 .users .container .box p span{
   color: #00918b;
+}
+
+.users .container .box .type{
+  color: #00918b;
+  font-size: 18px;
+  border-radius: 5px
+}
+
+
+.users .container .box form .btn{
+  width: 30%;
+  padding: 2px;
+  border: 2px solid black;
+  background: #ff57a2;
+  border-radius: 7px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.users .container .box form .btn:hover{
+  background: #f72585;
+  cursor: pointer;
+}
+
+.users .container .box form .dlt-btn{
+  width: 30%;
+  padding: 2px;
+  border: 2px solid black;
+  background: #ff5757;
+  border-radius: 7px;
+  margin-bottom: 15px;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
+  margin-left: 15%;
+  margin-right: 5%;
+}
+
+.users .container .box form .dlt-btn:hover{
+  background: #fb3131;
+  cursor: pointer;
 }
