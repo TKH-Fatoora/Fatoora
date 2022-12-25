@@ -1,0 +1,46 @@
+
+.title{
+   text-align: center;
+   margin-bottom: 30px;
+   color: black;
+   text-transform: uppercase;
+   font-size: 35px;
+}
+
+.dboard .container{
+  max-width: 100%;
+  margin:0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 20rem);
+  gap:1.5rem;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.dboard .container .box{
+  text-align: center;
+  padding: 0 10px;
+  border:2px dashed black;
+  background-color: white;
+  box-shadow: 0 10px 15px rgba(0,0,0,.2);
+  border-radius: 15px;
+  position: relative;
+  width: 95%;
+}
+
+.dboard .container .box h3{
+   font-size: 2.5rem;
+   color:black;
+   margin: 10px 0;
+}
+
+.dboard .container .box p{
+   padding: 20px;
+   border-radius: 15px;
+   background-color: white;
+   color: black;
+   border:2px dashed black;
+   font-size: 20px;
+}

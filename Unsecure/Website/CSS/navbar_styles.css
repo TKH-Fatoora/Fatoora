@@ -1,0 +1,216 @@
+:root {
+  --navItem: #00BCB4;
+  --white: #ffffff;
+}
+
+
+*::selection{
+   background-color: #c879ff;
+   color: white;
+}
+
+*::-webkit-scrollbar{
+   height: 8px;
+   width: 15px;
+}
+
+*::-webkit-scrollbar-track{
+   background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+   background-color: #826aed;
+}
+
+body{
+  background-color: #D8FDFE;
+  font-family: "Cairo", sans-serif;
+}
+
+.header{
+   position: sticky;
+   top:0;
+   left:0;
+   right:0;
+   background-color: white;
+   z-index: 1000;
+   box-shadow:  0 10px 15px rgba(0,0,0,0.2);
+}
+
+.header .flex{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:15px 20px;
+  margin:0;
+  position: relative;
+}
+
+.header .flex .logo{
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .flex .logo-icon{
+  width: 50px;
+  height: 50px;
+  fill: #00BCB4;
+}
+
+.header .flex .logo-text{
+  font-size: 30px;
+  color: #00BCB4;
+  text-decoration: none;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.header .flex .navbar{
+  margin-left: 20%;
+}
+
+.header .flex .navbar.active{
+  display: block;
+}
+
+.header .flex .navbar .navbar-ul{
+   list-style: none;
+   text-decoration: none;
+}
+
+.header .flex .navbar .navbar-ul .navbar-li{
+   float: left;
+   position: relative;
+
+}
+
+.header .flex .navbar .navbar-ul .navbar-li a{
+   font-size: 22px;
+   padding: 10px 25px;
+   display: block;
+   color:#595959;
+   text-decoration: none;
+}
+
+.header .flex .navbar .navbar-ul .navbar-li a:hover{
+   background-color: #00BCB4;
+   text-decoration: underline;
+   color: white;
+}
+
+.header .flex .icons > *{
+   font-size: 25px;
+   margin-left: 10px;
+   color: black;
+   cursor: pointer;
+}
+
+#menu-btn{
+   display: none;
+}
+
+.header .flex .account.active{
+  display: block;
+}
+
+
+.header .flex .account{
+  position: absolute;
+  top:120%;
+  right:30px;
+  width: 25%;
+  min-width: 270px;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+  background-color: white;
+  padding: 10px;
+  text-align: left;
+  border: 3px solid black;
+  display: none;
+  animation: fadeIn .2s linear;
+}
+.header .flex .account-options{
+  text-align: center;
+}
+
+.header .flex .account p{
+  font-size: 20px;
+  color: black;
+  line-height: 1.5;
+}
+
+.header .flex .account p a{
+   color:#00BCB4;
+}
+
+.header .flex .account .acc-info{
+  color: #f72585;
+}
+
+/* Responsiveness  */
+@media (max-width:1120px){
+
+  .header .flex .navbar{
+    margin-left: 15%
+  }
+
+  .header .flex .navbar .navbar-ul .navbar-li a{
+     font-size: 19px;
+     padding: 15px 15px;
+  }
+  .header .flex .icons > *{
+     font-size: 20px;
+  }
+
+  .header .flex .logo-icon{
+    width: 40px;
+    height: 40px;
+    fill: #00BCB4;
+  }
+
+  .header .flex .logo-text{
+    font-size: 25px;
+    color: #00BCB4;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width:760px){
+  #menu-btn{
+      display: inline-block;
+   }
+   .header .flex .navbar.active{
+     display: block;
+   }
+
+   .header .flex .navbar{
+      position: absolute;
+      margin-left: 0;
+      top:99%;
+      left:0;
+      right:0;
+      background-color: white;
+      border-top: 3px solid black;
+      border-bottom: 3px solid black;
+      display: none;
+      width: 100%
+   }
+
+   .header .flex .navbar .navbar-ul .navbar-li{
+     width: 100%;
+   }
+   .header .flex .navbar .navbar-ul .navbar-li a{
+     margin-right: 10%
+   }
+
+    .header .flex .account{
+     width: 40%;
+   }
+
+   .header .flex .account p{
+     padding-bottom: 5px;
+     font-size: 15px;
+   }
+}
