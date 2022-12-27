@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
 // _____________________________________________________________________________
       $cookie_name = "uid";
       $cookie_value = md5($row['UserID']);
-      setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+      setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 // _____________________________________________________________________________
 
       $_SESSION['user_name'] = $row['name'];
