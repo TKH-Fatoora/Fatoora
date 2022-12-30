@@ -20,38 +20,48 @@ $selected_user = mysqli_query($conn, "SELECT * FROM `users` WHERE UserID = '$use
 
 $current_user = mysqli_fetch_assoc($selected_user);
 
-if(isset($_POST['submit'])){
-  // These two functions are important for extra security purpose in the signup form:
-  // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
-  // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
-  // passwords md5 hashing for an extra layer of security for the users
+if (
+  isset($_POST["token"]) &&
+  isset($_SESSION["token"]) &&
+  isset($_SESSION["token-expire"]) &&
+  $_SESSION["token"]==$_POST["token"]
+) {
+  // (B1) EXPIRED
+  if (time() >= $_SESSION["token-expire"]) {
+    exit("Token expired. Please reload form.");
+    header('location:login.php');
+  }
 
-  // fetch the username, email, password & confirm password of the user
-   $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
-   $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
-   $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
-   $_SESSION['user_name'] = $name;
+  if(isset($_POST['submit'])){
+    // These two functions are important for extra security purpose in the signup form:
+    // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
+    // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
+    // passwords md5 hashing for an extra layer of security for the users
 
- // _____________________________________________________________________________
-    if (isset($pass)){
-      // if the 2 paaswords entered do not match
-       if($pass != $cpass){
-          $message[] = 'Passwords do not match!'; // store notification message
+    // fetch the username, email, password & confirm password of the user
+     $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
+     $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
+     $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
+     $_SESSION['user_name'] = $name;
+
    // _____________________________________________________________________________
-       }else{
-         // if all input was valid, insert these values into the users table in the databsae
-          mysqli_query($conn, "UPDATE `users` SET name = '$name', password = '$pass'  WHERE UserID = '$user_id'") or die('query failed');
-          header('location:Profile.php');
-       }
-    }else{
-      mysqli_query($conn, "UPDATE `users` SET name = '$name' WHERE UserID = '$user_id'") or die('query failed');
-      header('location:Profile.php');
+      if (isset($pass)){
+        // if the 2 paaswords entered do not match
+         if($pass != $cpass){
+            $message[] = 'Passwords do not match!'; // store notification message
+     // _____________________________________________________________________________
+         }else{
+           // if all input was valid, insert these values into the users table in the databsae
+            mysqli_query($conn, "UPDATE `users` SET name = '$name', password = '$pass'  WHERE UserID = '$user_id'") or die('query failed');
+            header('location:Profile.php');
+         }
+      }else{
+        mysqli_query($conn, "UPDATE `users` SET name = '$name' WHERE UserID = '$user_id'") or die('query failed');
+        header('location:Profile.php');
 
-    }
-
-
- }
-
+      }
+   }
+}
 
 ?>
 <!DOCTYPE html>
@@ -69,6 +79,9 @@ if(isset($_POST['submit'])){
 
   <div class="login-wrapper">
     <form action="Profile.php" method='post' class="form">
+      <!-- CSRF token -->
+      <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["token"]);?>">
+
       <img src="images/avatar.png" alt="">
       <h2>Profile</h2>
       <div class="input-group">

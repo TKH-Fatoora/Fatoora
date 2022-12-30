@@ -18,29 +18,41 @@ if(!isset($user_id)){
 
 // _____________________________________________________________________________
 
+if (
+  isset($_POST["token"]) &&
+  isset($_SESSION["token"]) &&
+  isset($_SESSION["token-expire"]) &&
+  $_SESSION["token"]==$_POST["token"]
+) {
+  // (B1) EXPIRED
+  if (time() >= $_SESSION["token-expire"]) {
+    exit("Token expired. Please reload form.");
+    header('location:login.php');
+  }
 
-// of the send button is pressed,
-if(isset($_POST['submit'])){
-    // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
+  // of the send button is pressed,
+  if(isset($_POST['submit'])){
+      // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
 
-    // fetch the name, email, number & message content of the user
-    $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
-    $subject = mysqli_real_escape_string($conn, filter_var($_POST['subject'], FILTER_SANITIZE_STRING));
-    $content = mysqli_real_escape_string($conn, filter_var($_POST['message'], FILTER_SANITIZE_STRING));
+      // fetch the name, email, number & message content of the user
+      $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
+      $subject = mysqli_real_escape_string($conn, filter_var($_POST['subject'], FILTER_SANITIZE_STRING));
+      $content = mysqli_real_escape_string($conn, filter_var($_POST['message'], FILTER_SANITIZE_STRING));
 
-// _____________________________________________________________________________
-    // check if a message with the same user info and content already exists in the message table in the database
-    $select_message = mysqli_query($conn, "SELECT * FROM `message` WHERE email = '$email' AND subject = '$subject' AND content = '$content'") or die('query failed');
+  // _____________________________________________________________________________
+      // check if a message with the same user info and content already exists in the message table in the database
+      $select_message = mysqli_query($conn, "SELECT * FROM `message` WHERE email = '$email' AND subject = '$subject' AND content = '$content'") or die('query failed');
 
-    // if more than 0 rows were returned, then the message already exists
-    if(mysqli_num_rows($select_message) > 0){
-      $message[] = 'Message sent already!'; // store notification message
+      // if more than 0 rows were returned, then the message already exists
+      if(mysqli_num_rows($select_message) > 0){
+        $message[] = 'Message sent already!'; // store notification message
 
-    }else{
-      // insert new message in the message table in the databse
-      mysqli_query($conn, "INSERT INTO `message`(UserID, email, subject,  content) VALUES('$user_id', '$email', '$subject', '$content')") or die('query failed');
-      $message[] = 'Message sent successfully!'; // store notification message
-    }
+      }else{
+        // insert new message in the message table in the databse
+        mysqli_query($conn, "INSERT INTO `message`(UserID, email, subject,  content) VALUES('$user_id', '$email', '$subject', '$content')") or die('query failed');
+        $message[] = 'Message sent successfully!'; // store notification message
+      }
+  }
 }
 ?>
 
@@ -70,6 +82,9 @@ if(isset($_POST['submit'])){
         <h1 id="page_title">Contact us</h1>
 
           <form action="contact_us.php" method="POST">
+              <!-- CSRF token -->
+              <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["token"]);?>">
+
               <label>Email:</label>
               <input type="email" id="email" name="email" required>
 

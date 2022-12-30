@@ -24,54 +24,65 @@ function filter_filename($fname) {
     return str_replace(array_merge( array_map('chr', range(0, 31)), array('<', '>', ':', '"', '/', '\\', '|', '?', '*')), '', $fname);
 }
 
-// if the add product button is pressed,
-if(isset($_POST['addExpense'])){
-   //  mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
+if (
+  isset($_POST["token"]) &&
+  isset($_SESSION["token"]) &&
+  isset($_SESSION["token-expire"]) &&
+  $_SESSION["token"]==$_POST["token"]
+) {
+  // (B1) EXPIRED
+  if (time() >= $_SESSION["token-expire"]) {
+    exit("Token expired. Please reload form.");
+  }
 
-   // fetch the id, name, price, details, category & image of the selected product
-   $date = mysqli_real_escape_string($conn, $_POST['date']);
-   $method = mysqli_real_escape_string($conn, filter_var($_POST['method'], FILTER_SANITIZE_STRING));
-   $category = mysqli_real_escape_string($conn, filter_var($_POST['category'], FILTER_SANITIZE_STRING));
-   $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
-   $amount = mysqli_real_escape_string($conn, filter_var($_POST['amount'], FILTER_SANITIZE_STRING));
-   $note = mysqli_real_escape_string($conn, filter_var($_POST['note'], FILTER_SANITIZE_STRING));
+  // if the add product button is pressed,
+  if(isset($_POST['addExpense'])){
+     //  mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
 
-   // __________________________________________________________________________
-   // Image Grabbing and Changing the filename
-   if(!empty($_FILES["image"]["name"]))
-   {
-     // images Folder path
-     $target = './images/';
-     // Getting the image Name
-     $filteredName = $_FILES["image"]["name"];
-     // seperating the extension from the temporary file name
-     $temp = explode(".", $_FILES["image"]["name"]);
-     // renaming the Image
-     $filteredName = filter_filename($name) . '.' . end($temp);
-     //store image size
-     $image_size = $_FILES['image']['size'];
-   }else {
-     $filteredName = 'none.jpg';
-   }
+     // fetch the id, name, price, details, category & image of the selected product
+     $date = mysqli_real_escape_string($conn, $_POST['date']);
+     $method = mysqli_real_escape_string($conn, filter_var($_POST['method'], FILTER_SANITIZE_STRING));
+     $category = mysqli_real_escape_string($conn, filter_var($_POST['category'], FILTER_SANITIZE_STRING));
+     $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
+     $amount = mysqli_real_escape_string($conn, filter_var($_POST['amount'], FILTER_SANITIZE_STRING));
+     $note = mysqli_real_escape_string($conn, filter_var($_POST['note'], FILTER_SANITIZE_STRING));
 
-   // __________________________________________________________________________
-
-   // if the product did not exist, insert all its data into the products table in the database
-    $insert_expense = mysqli_query($conn, "INSERT INTO `expenses`(UserID, `date`, method, category, name, amount, note, image) VALUES('$user_id', '$date', '$method', '$category','$name', '$amount', '$note', '$filteredName')") or die('query failed');
- // __________________________________________________________________________
-
-   if(!empty($_FILES["image"]["name"]))
-   {
-     if($image_size > 6000000){ //validate image size (6mb images)
-       $message[] = 'image size is too large!'; // store notification message
-     }else{
-       if(!empty($_FILES["image"]["name"])) move_uploaded_file($_FILES["image"]["tmp_name"], $target . $filteredName);
-       $message[] = 'expense added successfully!'; // store notification message
+     // __________________________________________________________________________
+     // Image Grabbing and Changing the filename
+     if(!empty($_FILES["image"]["name"]))
+     {
+       // images Folder path
+       $target = './images/';
+       // Getting the image Name
+       $filteredName = $_FILES["image"]["name"];
+       // seperating the extension from the temporary file name
+       $temp = explode(".", $_FILES["image"]["name"]);
+       // renaming the Image
+       $filteredName = filter_filename($name) . '.' . end($temp);
+       //store image size
+       $image_size = $_FILES['image']['size'];
+     }else {
+       $filteredName = 'none.jpg';
      }
-   }
 
+     // __________________________________________________________________________
+
+     // if the product did not exist, insert all its data into the products table in the database
+      $insert_expense = mysqli_query($conn, "INSERT INTO `expenses`(UserID, `date`, method, category, name, amount, note, image) VALUES('$user_id', '$date', '$method', '$category','$name', '$amount', '$note', '$filteredName')") or die('query failed');
+   // __________________________________________________________________________
+
+     if(!empty($_FILES["image"]["name"]))
+     {
+       if($image_size > 6000000){ //validate image size (6mb images)
+         $message[] = 'image size is too large!'; // store notification message
+       }else{
+         if(!empty($_FILES["image"]["name"])) move_uploaded_file($_FILES["image"]["tmp_name"], $target . $filteredName);
+         $message[] = 'expense added successfully!'; // store notification message
+       }
+     }
+
+  }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -91,6 +102,8 @@ if(isset($_POST['addExpense'])){
       <!-- add new Expense -->
       <form class="expenses" action="expense.php" method="POST" enctype="multipart/form-data">
         <h3>New Expense</h3>
+        <!-- CSRF token -->
+        <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["token"]);?>">
 
         <!-- date -->
         <input type="date" name="date" class="box">

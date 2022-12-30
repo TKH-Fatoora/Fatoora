@@ -19,41 +19,54 @@ if(!isset($admin_id)){
    header('location:login.php');
 };
 
-// _____________________________________________________________________________
+if (
+  isset($_POST["token"]) &&
+  isset($_SESSION["token"]) &&
+  isset($_SESSION["token-expire"]) &&
+  $_SESSION["token"]==$_POST["token"]
+) {
+  // CSRF token EXPIRED
+  if (time() >= $_SESSION["token-expire"]) {
+    exit("Token expired. Please reload form.");
+    header('location:login.php');
+  }
 
-// if the update user button is pressed,
-if(isset($_POST['update_user'])){
-   // fetch the id of the selected user
-   $update_id = $_POST['userID'];
+  // _____________________________________________________________________________
 
-   $type = mysqli_real_escape_string($conn, $_POST['type']);
-   // update the selected user's privilege from the users table in the database
-   mysqli_query($conn, "UPDATE `users` SET type = '$type' WHERE UserID = '$update_id'") or die('query failed');
-   $message[] = 'User has been deleted!'; // store notification message
-   header('location:adminUsers.php'); //reloads the updated page
+  // if the update user button is pressed,
+  if(isset($_POST['update_user'])){
+
+     // fetch the id of the selected user
+     $update_id = $_POST['userID'];
+
+     $type = mysqli_real_escape_string($conn, $_POST['type']);
+     // update the selected user's privilege from the users table in the database
+     mysqli_query($conn, "UPDATE `users` SET type = '$type' WHERE UserID = '$update_id'") or die('query failed');
+     $message[] = 'User has been deleted!'; // store notification message
+     header('location:adminUsers.php'); //reloads the updated page
+  }
+  // _____________________________________________________________________________
+  // if the delete user button is pressed,
+  if(isset($_POST['delete_user'])){
+     // fetch the id of the selected user
+     $delete_id = $_POST['userID'];
+     // delete the selected user from the users table in the database
+     mysqli_query($conn, "DELETE FROM `users` WHERE UserID = '$delete_id'") or die('query failed');
+     mysqli_query($conn, "DELETE FROM `expenses` WHERE UserID = '$delete_id'") or die('query failed');
+     mysqli_query($conn, "DELETE FROM `message` WHERE UserID = '$delete_id'") or die('query failed');
+     $message[] = 'User has been deleted!'; // store notification message
+     header('location:adminUsers.php'); //reloads the updated page
+  }
+
+  // _____________________________________________________________________________
+  // if the delete user button is pressed,
+  if(isset($_POST['stats_user'])){
+     // fetch the id of the selected user
+     $_SESSION['selected_user_id'] = $_POST['userID'];
+
+     header('location:adminStatsPerUser.php'); //reloads the updated page
+  }
 }
-// _____________________________________________________________________________
-// if the delete user button is pressed,
-if(isset($_POST['delete_user'])){
-   // fetch the id of the selected user
-   $delete_id = $_POST['userID'];
-   // delete the selected user from the users table in the database
-   mysqli_query($conn, "DELETE FROM `users` WHERE UserID = '$delete_id'") or die('query failed');
-   mysqli_query($conn, "DELETE FROM `expenses` WHERE UserID = '$delete_id'") or die('query failed');
-   mysqli_query($conn, "DELETE FROM `message` WHERE UserID = '$delete_id'") or die('query failed');
-   $message[] = 'User has been deleted!'; // store notification message
-   header('location:adminUsers.php'); //reloads the updated page
-}
-
-// _____________________________________________________________________________
-// if the delete user button is pressed,
-if(isset($_POST['stats_user'])){
-   // fetch the id of the selected user
-   $_SESSION['selected_user_id'] = $_POST['userID'];
-
-   header('location:adminStatsPerUser.php'); //reloads the updated page
-}
-
 // _____________________________________________________________________________
 
  ?>
@@ -99,6 +112,7 @@ if(isset($_POST['stats_user'])){
          <p>Username: <span><?php echo htmlspecialchars($fetch_users['name']); ?></span></p>
          <p>Email: <span><?php echo htmlspecialchars($fetch_users['email']); ?></span></p>
          <form class="" action="adminUsers.php" method="post" enctype="multipart/form-data">
+           <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["token"]);?>">
            <span class="sub">User Type:</span>
            <select class="type" name="type" required>
              <option value="user" <?php if ($fetch_users['type'] == 'user' ){?> selected <?php  }?> > user </option>

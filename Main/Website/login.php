@@ -31,7 +31,6 @@ if(isset($_POST['submit'])){
    $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
 
-
    // if the rows returned are more than 0, then:
    if(mysqli_num_rows($select_users) > 0){
      // Return an associative array of the user's data
@@ -39,10 +38,13 @@ if(isset($_POST['submit'])){
       $uid = $row['UserID'];
 
 // _____________________________________________________________________________
-      $cookie_name = "uid";
-      $cookie_value = md5($uid);
-
-      setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
+      // $cookie_name = "uid";
+      // $cookie_value = md5($uid);
+      //
+      // setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
+// _____________________________________________________________________________
+      $_SESSION["token"] = bin2hex(random_bytes(32));
+      $_SESSION["token-expire"] = time() + 3600; // 1 hour = 3600 secs
 // _____________________________________________________________________________
 
       $_SESSION['user_name'] = $row['name'];
