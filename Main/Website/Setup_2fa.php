@@ -1,7 +1,7 @@
 <?php
 
 // connection to database
-@include 'Templates/config.php';
+include 'Templates/config.php';
 
 include_once(__DIR__.'/vendor/autoload.php');
 use PragmaRX\Google2FA;

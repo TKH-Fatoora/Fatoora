@@ -93,7 +93,7 @@ if(isset($_POST['submit'])){
       <input type="submit" name="submit" value="Login" class="submit-btn">
       <span class="mssg">New Here? <a href="signup.php">Sign Up</a> </span>
       <br><br>
-      <span class="mssg"><a href="forgetPass.php">Forgot Password?</a> </span>
+      <span class="mssg"><a href="resetPasswordAccount.php">Forgot Password?</a> </span>
     </form>
   </div>
 </body>?

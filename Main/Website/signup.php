@@ -2,6 +2,9 @@
 
 include 'Templates/config.php';
 
+session_start();
+
+
 if(isset($_POST['submit'])){
   // These two functions are important for extra security purpose in the signup form:
   // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
@@ -33,7 +36,9 @@ if(isset($_POST['submit'])){
              mysqli_query($conn, "INSERT INTO `users`(name, email, password, birthdate) VALUES('$name', '$email', '$pass', '$dob')") or die('query failed');
              $message[] = 'Registered successfully!'; // store notification message
              // redirect user to the login page
-             header('location:login.php');
+             $_SESSION["Vemail"] = $email;
+             $_SESSION["VPurpose"] = "signup";
+             header('location:Verify.php');
           }
        }
  }

@@ -11,9 +11,7 @@ if(isset($_POST['submit'])){
   // passwords md5 hashing for an extra layer of security for the users
 
   // fetch the  email, password & confirm password of the user
-   $email = $_SESSION["Vemail"];
-   $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
-   $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
+   $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
 
  // _____________________________________________________________________________
 
@@ -22,17 +20,16 @@ if(isset($_POST['submit'])){
 
     // if the rows returned are more than 0, that means that this email was used already
     if(mysqli_num_rows($select_users) > 0){
-      // if the 2 paaswords entered do not match
-       if($pass != $cpass){
-          $message[] = 'Passwords do not match!'; // store notification message
-// _____________________________________________________________________________
-       }else{
-         // if all input was valid, insert these values into the users table in the databsae
-          mysqli_query($conn, "UPDATE `users` SET password = '$pass' WHERE email = '$email'") or die('query failed');
-          $message[] = 'Password changed successfully!'; // store notification message
-          // redirect user to the login page
-          header('location:login.php');
-       }
+          $row = mysqli_fetch_assoc($select_users);
+          $uid = $row["UserID"];
+          $name = $row["name"];
+          $vrfy = $row["Verified"];
+          $_SESSION["Vemail"] = $email;
+          $_SESSION["VPurpose"] = "resetP";
+          // redirect user to the Verify page
+          header('location:Verify.php');
+
+          mysqli_query($conn, "UPDATE `users` SET VOTP = '$six_digit_random_number', Verified = 0  WHERE UserID = '$uid'") or die('query failed');
 
        }else{
          $message[] = 'User doesn\'t exist!'; // store notification message
@@ -54,17 +51,12 @@ if(isset($_POST['submit'])){
   <?php include 'Templates/notification.php' ?>
 
   <div class="login-wrapper">
-    <form action="forgetPass.php" method="POST" class="form">
+    <form action="resetPasswordAccount.php" method="POST" class="form">
       <img class="AvatarIcon" src="images/avatar.png" alt="">
       <h2>Change Password</h2>
-
       <div class="input-group">
-        <input type="password" name="password" id="loginPassword" required>
-        <label for="loginpassword">Password</label>
-      </div>
-      <div class="input-group">
-        <input type="password" name="confirmPassword" id="loginCPassword" required>
-        <label for="loginCPassword">Confirm Password</label>
+        <input type="email" name="email" id="loginUser" required>
+        <label for="email">Email</label>
       </div>
       <input type="submit" name="submit" value="Submit" class="submit-btn">
 

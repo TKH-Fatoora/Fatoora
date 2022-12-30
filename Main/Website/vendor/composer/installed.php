@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a96aaca04d5b057e85892dde142fa90fcae9feda',
+        'reference' => '0e1f23ddf5f9a7cf257722ae8ec25e107acd20c2',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a96aaca04d5b057e85892dde142fa90fcae9feda',
+            'reference' => '0e1f23ddf5f9a7cf257722ae8ec25e107acd20c2',
             'dev_requirement' => false,
         ),
         'paragonie/constant_time_encoding' => array(
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../paragonie/constant_time_encoding',
             'aliases' => array(),
             'reference' => '58c3f47f650c94ec05a151692652a868995d2938',
+            'dev_requirement' => false,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.7.1',
+            'version' => '6.7.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => '49cd7ea3d2563f028d7811f06864a53b1f15ff55',
             'dev_requirement' => false,
         ),
         'pragmarx/google2fa' => array(
