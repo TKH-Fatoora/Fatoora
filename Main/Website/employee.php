@@ -5,6 +5,9 @@
 // start employee session
 session_start();
 
+// prevent session hijacking
+@include 'Templates/session_hijacking_prevention.php';
+
 // fetching the value for the employee id
 $employee_id = $_SESSION['employee_id'];
 

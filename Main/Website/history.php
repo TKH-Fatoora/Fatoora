@@ -5,6 +5,9 @@ include 'Templates/config.php';
 // start session
 session_start();
 
+// prevent session hijacking
+@include 'Templates/session_hijacking_prevention.php';
+
 // fetching the value for the user id
 $user_id = $_SESSION['user_id'];
 

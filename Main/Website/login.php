@@ -3,7 +3,11 @@
 @include 'Templates/config.php';
 
 // start user session
-session_start();
+if (isset($_SESSION)){
+  session_regenerate_id();
+}else{
+  session_start();
+}
 
 include_once(__DIR__.'/vendor/autoload.php');
 use PragmaRX\Google2FA;

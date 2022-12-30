@@ -5,6 +5,9 @@
 // start user session
 session_start();
 
+// prevent session hijacking
+@include 'Templates/session_hijacking_prevention.php';
+
 // fetching the value for the user id
 $admin_id = $_SESSION['selected_user_id'];
 

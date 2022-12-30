@@ -5,6 +5,9 @@
 // start admin session
 session_start();
 
+// prevent session hijacking
+@include 'Templates/session_hijacking_prevention.php';
+
 //Reset the variable
 if(isset($_SESSION['selected_user_id'])) { unset($_SESSION['selected_user_id']); }
 

@@ -4,6 +4,8 @@
 
 // start admin session
 session_start();
+// prevent session hijacking
+@include 'Templates/session_hijacking_prevention.php';
 
 // fetching the value for the admin id
 $admin_id = $_SESSION['admin_id'];

@@ -4,6 +4,9 @@ include 'Templates/config.php';
 
 session_start();
 
+// prevent session hijacking
+@include 'Templates/session_hijacking_prevention.php';
+
 
 if(isset($_SESSION["user_id"]))
 {

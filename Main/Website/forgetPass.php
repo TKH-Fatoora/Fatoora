@@ -4,6 +4,10 @@ include 'Templates/config.php';
 
 session_start();
 
+// prevent session hijacking
+@include 'Templates/session_hijacking_prevention.php';
+
+
 if(isset($_POST['submit'])){
   // These two functions are important for extra security purpose in the signup form:
   // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.

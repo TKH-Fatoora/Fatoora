@@ -6,6 +6,10 @@ include_once(__DIR__.'/vendor/autoload.php');
 use PragmaRX\Google2FA;
 
 session_start();
+$_SESSION['ipaddress'] = $_SERVER['REMOTE_ADDR'];
+$_SESSION['useragent'] = $_SERVER['HTTP_USER_AGENT'];
+$_SESSION['lastaccess'] = time();
+
 
 if(isset($_POST['Back'])){
   header('location:login.php');

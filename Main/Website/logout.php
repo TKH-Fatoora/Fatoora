@@ -17,15 +17,15 @@ session_start();
 // unset($_COOKIE["uid"]);
 
 // unset cookies
-// if (isset($_COOKIE["uid"])) {
-//     $cookies = explode(';', $_COOKIE["uid"]);
-//     foreach($cookies as $cookie) {
-//         $parts = explode('=', $cookie);
-//         $name = trim($parts[0]);
-//         setcookie($name, '', time()-1000);
-//         setcookie($name, '', time()-1000, '/');
-//     }
-// }
+if (isset($_COOKIE["uid"])) {
+    $cookies = explode(';', $_COOKIE["uid"]);
+    foreach($cookies as $cookie) {
+        $parts = explode('=', $cookie);
+        $name = trim($parts[0]);
+        setcookie($name, '', time()-1000);
+        setcookie($name, '', time()-1000, '/');
+    }
+}
 
 session_regenerate_id();
 // free all session variables
