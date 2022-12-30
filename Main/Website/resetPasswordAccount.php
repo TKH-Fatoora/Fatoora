@@ -30,7 +30,6 @@ if(isset($_POST['submit'])){
           header('location:Verify.php');
 
           mysqli_query($conn, "UPDATE `users` SET VOTP = '$six_digit_random_number', Verified = 0  WHERE UserID = '$uid'") or die('query failed');
-
        }else{
          $message[] = 'User doesn\'t exist!'; // store notification message
        }
@@ -54,6 +53,7 @@ if(isset($_POST['submit'])){
     <form action="resetPasswordAccount.php" method="POST" class="form">
       <img class="AvatarIcon" src="images/avatar.png" alt="">
       <h2>Change Password</h2>
+      <span>Please Specify your email</span>
       <div class="input-group">
         <input type="email" name="email" id="loginUser" required>
         <label for="email">Email</label>

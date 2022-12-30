@@ -45,7 +45,7 @@ if(mysqli_num_rows($select_users) > 0){
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" href="CSS/login.css">
-   <title>Login Page</title>
+   <title>2FA</title>
  </head>
  <body>
 
