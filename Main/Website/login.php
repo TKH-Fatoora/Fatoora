@@ -5,6 +5,9 @@
 // start user session
 session_start();
 
+include_once(__DIR__.'/vendor/autoload.php');
+use PragmaRX\Google2FA;
+
 // _____________________________________________________________________________
 
 // if the submit(login) button is pressed,
@@ -18,50 +21,43 @@ if(isset($_POST['submit'])){
    $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
 
 
+   $google2fa = new \PragmaRX\Google2FA\Google2FA();
+   $secret = $google2fa->generateSecretKey();
+
+
 // _____________________________________________________________________________
 
    // select all users that have the same email and password that the user just entered from the users table in the databse, if possible
    $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
+
+
    // if the rows returned are more than 0, then:
    if(mysqli_num_rows($select_users) > 0){
      // Return an associative array of the user's data
       $row = mysqli_fetch_assoc($select_users);
+      $uid = $row['UserID'];
 
 // _____________________________________________________________________________
       $cookie_name = "uid";
-      $cookie_value = md5($row['UserID']);
+      $cookie_value = md5($uid);
+
       setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 // _____________________________________________________________________________
 
       $_SESSION['user_name'] = $row['name'];
       $_SESSION['user_email'] = $row['email'];
+      $_SESSION['UID'] = $uid;
 
-      // if the user is an admin, save his credetials in the session and redirect him to the admin page
-      if($row['type'] == 'admin'){
-         $_SESSION['admin_id'] = $row['UserID'];
-         header('location:adminDash.php');
 
-// _____________________________________________________________________________
+      if ($row['QR'] == 0){
+        $google2fa = new \PragmaRX\Google2FA\Google2FA();
+        $secret = $google2fa->generateSecretKey();
 
-      // if the user is not an admin, save his credetials in the session and redirect him to the home page
-      }elseif($row['type'] == 'user'){
-         $_SESSION['user_id'] = $row['UserID'];
-         header('location:home.php');
+        mysqli_query($conn, "UPDATE `users` SET 2fa = '$secret'  WHERE UserID = '$uid'") or die('query failed');
       }
+      header('location:Setup_2fa.php');
 
-// _____________________________________________________________________________
-      elseif($row['type'] == 'employee'){
-         $_SESSION['employee_id'] = $row['UserID'];
-         header('location:employee.php');
-      }
-
-
-// _____________________________________________________________________________
-
-      else{
-         $message[] = 'no user found!'; // store notification message
-      }
     }else{ // if email or password do not match the ones stored in the users table in the database
       $message[] = 'Incorrect email or password, try again!'; // store notification message
     }
@@ -84,7 +80,7 @@ if(isset($_POST['submit'])){
 
   <div class="login-wrapper">
     <form action="login.php" method="POST" class="form">
-      <img src="images/avatar.png" alt="">
+      <img class="AvatarIcon" src="images/avatar.png" alt="">
       <h2>Login</h2>
       <div class="input-group">
         <input type="email" name="email" id="loginUser" required>

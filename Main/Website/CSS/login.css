@@ -38,7 +38,7 @@ body {
   border-radius: 10px;
   pointer-events: none;
 }
-.form img {
+.form .AvatarIcon {
   position: absolute;
   top: -50px;
   left: calc(50% - 50px);
@@ -94,6 +94,31 @@ body {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.back-btn {
+  display: block;
+  margin-left: 0;
+  border: none;
+  outline: none;
+  background: #58BDC9;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.OTPImage
+{
+  width:100%;
+}
+.Buttons
+{
+  display: flex;
+  align-items: left;
+  flex-direction: row;
 }
 .mssg{
   color: inherit;
