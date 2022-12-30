@@ -28,14 +28,14 @@ function filter_filename($fname) {
 }
 
 if (
-  isset($_POST["token"]) &&
-  isset($_SESSION["token"]) &&
-  isset($_SESSION["token-expire"]) &&
-  $_SESSION["token"]==$_POST["token"]
+  isset($_POST["csrf"]) &&
+  isset($_SESSION["csrf"]) &&
+  isset($_SESSION["csrf-expire"]) &&
+  $_SESSION["csrf"]==$_POST["csrf"]
 ) {
   // (B1) EXPIRED
-  if (time() >= $_SESSION["token-expire"]) {
-    exit("Token expired. Please reload form.");
+  if (time() >= $_SESSION["csrf-expire"]) {
+    exit("csrf expired. Please reload form.");
   }
 
   // if the add product button is pressed,
@@ -106,7 +106,7 @@ if (
       <form class="expenses" action="expense.php" method="POST" enctype="multipart/form-data">
         <h3>New Expense</h3>
         <!-- CSRF token -->
-        <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["token"]);?>">
+        <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION["csrf"]);?>">
 
         <!-- date -->
         <input type="date" name="date" class="box">

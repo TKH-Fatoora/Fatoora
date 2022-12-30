@@ -23,10 +23,10 @@ if(!isset($admin_id)){
 };
 
 if (
-  isset($_POST["token"]) &&
-  isset($_SESSION["token"]) &&
-  isset($_SESSION["token-expire"]) &&
-  $_SESSION["token"]==$_POST["token"]
+  isset($_POST["csrf"]) &&
+  isset($_SESSION["csrf"]) &&
+  isset($_SESSION["csrf-expire"]) &&
+  $_SESSION["csrf"]==$_POST["csrf"]
 ) {
   // CSRF token EXPIRED
   if (time() >= $_SESSION["token-expire"]) {
@@ -115,7 +115,7 @@ if (
          <p>Username: <span><?php echo htmlspecialchars($fetch_users['name']); ?></span></p>
          <p>Email: <span><?php echo htmlspecialchars($fetch_users['email']); ?></span></p>
          <form class="" action="adminUsers.php" method="post" enctype="multipart/form-data">
-           <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["token"]);?>">
+           <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["csrf"]);?>">
            <span class="sub">User Type:</span>
            <select class="type" name="type" required>
              <option value="user" <?php if ($fetch_users['type'] == 'user' ){?> selected <?php  }?> > user </option>

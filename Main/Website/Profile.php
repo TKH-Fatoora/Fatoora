@@ -24,14 +24,14 @@ $selected_user = mysqli_query($conn, "SELECT * FROM `users` WHERE UserID = '$use
 $current_user = mysqli_fetch_assoc($selected_user);
 
 if (
-  isset($_POST["token"]) &&
-  isset($_SESSION["token"]) &&
-  isset($_SESSION["token-expire"]) &&
-  $_SESSION["token"]==$_POST["token"]
+  isset($_POST["csrf"]) &&
+  isset($_SESSION["csrf"]) &&
+  isset($_SESSION["csrf-expire"]) &&
+  $_SESSION["csrf"]==$_POST["csrf"]
 ) {
   // (B1) EXPIRED
-  if (time() >= $_SESSION["token-expire"]) {
-    exit("Token expired. Please reload form.");
+  if (time() >= $_SESSION["csrf-expire"]) {
+    exit("csrf expired. Please reload form.");
     header('location:login.php');
   }
 
@@ -83,7 +83,7 @@ if (
   <div class="login-wrapper">
     <form action="Profile.php" method='post' class="form">
       <!-- CSRF token -->
-      <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["token"]);?>">
+      <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION["csrf"]);?>">
 
       <img src="images/avatar.png" alt="">
       <h2>Profile</h2>

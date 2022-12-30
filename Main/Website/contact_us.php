@@ -22,10 +22,10 @@ if(!isset($user_id)){
 // _____________________________________________________________________________
 
 if (
-  isset($_POST["token"]) &&
-  isset($_SESSION["token"]) &&
-  isset($_SESSION["token-expire"]) &&
-  $_SESSION["token"]==$_POST["token"]
+  isset($_POST["csrf"]) &&
+  isset($_SESSION["csrf"]) &&
+  isset($_SESSION["csrf-expire"]) &&
+  $_SESSION["csrf"]==$_POST["csrf"]
 ) {
   // (B1) EXPIRED
   if (time() >= $_SESSION["token-expire"]) {
@@ -86,7 +86,7 @@ if (
 
           <form action="contact_us.php" method="POST">
               <!-- CSRF token -->
-              <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["token"]);?>">
+              <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["csrf"]);?>">
 
               <label>Email:</label>
               <input type="email" id="email" name="email" required>

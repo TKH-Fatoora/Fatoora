@@ -47,8 +47,8 @@ if(isset($_POST['submit'])){
       //
       // setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
 // _____________________________________________________________________________
-      $_SESSION["token"] = bin2hex(random_bytes(32));
-      $_SESSION["token-expire"] = time() + 3600; // 1 hour = 3600 secs
+      $_SESSION["csrf"] = bin2hex(random_bytes(32));
+      $_SESSION["csrf-expire"] = time() + 3600; // 1 hour = 3600 secs
 // _____________________________________________________________________________
 
       $_SESSION['user_name'] = $row['name'];
