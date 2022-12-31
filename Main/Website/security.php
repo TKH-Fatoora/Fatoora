@@ -19,6 +19,16 @@ if(!isset($security_id)){
    header('location:logout.php');
 };
 
+
+// fetching the value for the user id
+$blocked = $_SESSION['is_blocked'];
+
+// if user id is blocked, then:
+if($blocked == 1){
+  // redirect user to log in again
+   header('location:blocked.php');
+};
+
 // _____________________________________________________________________________
 
 // if the block user button is pressed,
@@ -92,6 +102,18 @@ if(isset($_POST['delete_alert'])){
 
       <!-- Printing out each user's data and alert -->
       <div class="box">
+        <?php
+          $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE UserID = '{$fetch_alert['UserID']}'") or die('query failed');
+
+          $Blocked = 0;
+          // if the rows returned are more than 0, then:
+          if(mysqli_num_rows($select_users) > 0){
+            // Return an associative array of the user's data
+             $user = mysqli_fetch_assoc($select_users);
+             $Blocked = $user['blocked'];
+             $type = $user['type'];
+           }
+          ?>
         <!-- htmlspecialchars prevents against xss attacks -->
         <p>Alert id: <span><?php echo htmlspecialchars($fetch_alert['AlertID']); ?></span></p>
         <p>User id: <span><?php echo htmlspecialchars($fetch_alert['UserID']); ?></span></p>
@@ -102,8 +124,11 @@ if(isset($_POST['delete_alert'])){
         <form class="" action="security.php" method="post">
           <input type="hidden" name="UserID" value="<?php echo htmlspecialchars($fetch_alert['UserID']); ?>">
           <input type="hidden" name="AlertID" value="<?php echo htmlspecialchars($fetch_alert['AlertID']); ?>">
+          <?php if($Blocked == 0 and $type !== "admin"){ ?>
           <input type="submit" class="btn" value="Block User" name="block_user">
+        <?php }elseif($Blocked == 1 and $type !== "admin"){ ?>
           <input type="submit" class="btn" value="Unblock User" name="unblock_user">
+          <?php } ?>
           <input type="submit" class="btn" value="Delete Alert" name="delete_alert">
         </form>
       </div>

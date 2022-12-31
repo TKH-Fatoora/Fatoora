@@ -47,25 +47,23 @@ if(isset($_POST['submit'])){
         Hacking_Detected($msg,$uid,$msg,"Authentication",2);
       }
 
-
-
       $google2fa = new \PragmaRX\Google2FA\Google2FA();
       if ($google2fa->verifyKey($secret_key, $OTP)) {
 
         mysqli_query($conn, "UPDATE `users` SET FailedLogin = 0  WHERE UserID = '$uid'") or die('query failed');
+
+
         // if the user is an admin, save his credetials in the session and redirect him to the admin page
         if($row['type'] == 'admin'){
            $_SESSION['admin_id'] = $row['UserID'];
            header('location:adminDash.php');
-
+       }
   // _____________________________________________________________________________
 
-
-        }elseif($row['type'] == 'user'){
+        elseif($row['type'] == 'user'){
            $_SESSION['user_id'] = $row['UserID'];
            header('location:home.php');
         }
-
   // _____________________________________________________________________________
         elseif($row['type'] == 'employee'){
            $_SESSION['employee_id'] = $row['UserID'];
@@ -73,11 +71,12 @@ if(isset($_POST['submit'])){
         }
   // _____________________________________________________________________________
 
-
-      }elseif($row['type'] == 'security'){
+        elseif($row['type'] == 'security'){
            $_SESSION['security_id'] = $row['UserID'];
            header('location:security.php');
         }
+
+        $_SESSION['is_blocked'] = $row['Blocked'];
 
   // _____________________________________________________________________________
       } else {
@@ -94,6 +93,7 @@ if(isset($_POST['submit'])){
         $message[] = 'Incorrect OTP!'; // store notification message
 
       }
+}
 }
 
  ?>
