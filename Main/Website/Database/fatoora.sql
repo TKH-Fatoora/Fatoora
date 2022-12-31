@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2022 at 06:46 PM
+-- Generation Time: Dec 31, 2022 at 01:50 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -104,20 +104,21 @@ CREATE TABLE `users` (
   `2fa` varchar(255) NOT NULL,
   `QR` int(11) NOT NULL DEFAULT 0,
   `VOTP` int(11) NOT NULL,
-  `Verified` int(11) NOT NULL DEFAULT 0
+  `Verified` int(11) NOT NULL DEFAULT 0,
+  `FailedLogin` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `name`, `email`, `password`, `birthdate`, `type`, `2fa`, `QR`, `VOTP`, `Verified`) VALUES
-(7, 'nour', 'n.sharaky@outlook.com', 'ccbc1770bb10486495d127a7d65c252b', '2022-11-07', 'user', '', 0, 0, 0),
-(8, 'nour', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2022-11-07', 'user', '', 0, 0, 0),
-(9, 'nour', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', '2022-11-08', 'user', 'GM2FBZOWUTQ6MRD3', 0, 0, 0),
-(10, 'ahmed', 'a@a.com', '0cc175b9c0f1b6a831c399e269772661', '2022-11-08', 'admin', 'BTJHDRG73DQDIUFL', 0, 0, 0),
-(19, 'Ahmed Basem', 'a23basem@gmail.com', '187ef4436122d1cc2f40dc2b92f0eba0', '2003-02-23', 'user', 'I4U66HX37ISQ4YE5', 1, 0, 1),
-(21, 'Ahmed Basem', 'ahmedbasemegy@gmail.com', '0cc175b9c0f1b6a831c399e269772661', '2003-03-23', 'user', '', 0, 0, 1);
+INSERT INTO `users` (`UserID`, `name`, `email`, `password`, `birthdate`, `type`, `2fa`, `QR`, `VOTP`, `Verified`, `FailedLogin`) VALUES
+(7, 'nour', 'n.sharaky@outlook.com', 'ccbc1770bb10486495d127a7d65c252b', '2022-11-07', 'user', '', 0, 0, 0, 0),
+(8, 'nour', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2022-11-07', 'user', '', 0, 0, 0, 0),
+(9, 'nour', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', '2022-11-08', 'user', 'GM2FBZOWUTQ6MRD3', 0, 0, 0, 0),
+(10, 'ahmed', 'a@a.com', '0cc175b9c0f1b6a831c399e269772661', '2022-11-08', 'admin', 'BTJHDRG73DQDIUFL', 0, 0, 0, 0),
+(19, 'Ahmed Basem', 'a23basem@gmail.com', '187ef4436122d1cc2f40dc2b92f0eba0', '2003-02-23', 'user', 'I4U66HX37ISQ4YE5', 1, 0, 1, 8),
+(21, 'Ahmed Basem', 'ahmedbasemegy@gmail.com', '0cc175b9c0f1b6a831c399e269772661', '2003-03-23', 'user', '', 0, 0, 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -162,7 +163,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
