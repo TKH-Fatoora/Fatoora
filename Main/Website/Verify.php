@@ -66,9 +66,13 @@ if(mysqli_num_rows($select_users) > 0){
     header('location:login.php');
   }else
   {
+    // Generating A 6 digit random Verification one time Password
     $six_digit_random_number = random_int(100000, 999999);
+    // Creating the email Body Content
     $email_msg = "Your OTP: " . $six_digit_random_number;
+    // Storing the VOTP in the Database
     mysqli_query($conn, "UPDATE `users` SET VOTP = '$six_digit_random_number', Verified = 0  WHERE UserID = '$uid'") or die('query failed');
+    // Sending the Email
     SendEmail($email,$name,$email_msg);
   }
  }

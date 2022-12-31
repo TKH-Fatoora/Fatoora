@@ -1,5 +1,5 @@
 <?php
-include_once(__DIR__.'/vendor/autoload.php');
+include_once(__DIR__.'/../vendor/autoload.php');
 
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
@@ -24,11 +24,10 @@ function SendEmail($RecepientEmail,$RecepientName,$eContent)
       $mail->Port       = 587;                     //TCP port to connect to;
 
       //Recipients
-      $mail->setFrom('gogo47face@gmail.com', 'Fatoora');
-      $mail->addAddress($RecepientEmail, $RecepientName);     //Add a recipient
-
+      $mail->setFrom('TKHFatoora@gmail.com', 'Fatoora');
+      $mail->addAddress($RecepientEmail, $RecepientName);  //Add a recipient
       //Content
-      $mail->isHTML(true);                                  //Set email format to HTML
+      $mail->isHTML(true);                         //Set email format to HTML
       $mail->Subject = 'Account Verification';
       $mail->Body    = $eContent;
 
