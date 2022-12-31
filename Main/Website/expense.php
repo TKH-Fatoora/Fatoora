@@ -36,6 +36,7 @@ if (
   // (B1) EXPIRED
   if (time() >= $_SESSION["csrf-expire"]) {
     exit("csrf expired. Please reload form.");
+    header('location:logout.php');
   }
 
   // if the add product button is pressed,
