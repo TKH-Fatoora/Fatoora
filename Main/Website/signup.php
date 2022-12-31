@@ -4,6 +4,7 @@ include 'Templates/config.php';
 
 session_start();
 
+include 'Templates/PasswordPolicy.php';
 
 if(isset($_POST['submit'])){
   // These two functions are important for extra security purpose in the signup form:
@@ -14,6 +15,7 @@ if(isset($_POST['submit'])){
   // fetch the username, email, password & confirm password of the user
    $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
    $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
+   $PasswordIsCompliant = PasswordComply(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
    $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
    $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
    $dob = mysqli_real_escape_string($conn, $_POST['DOB']);
@@ -32,6 +34,9 @@ if(isset($_POST['submit'])){
              $message[] = 'Passwords do not match!'; // store notification message
  // _____________________________________________________________________________
           }else{
+            //Password Policy
+            if ($PasswordIsCompliant)
+            {
             // if all input was valid, insert these values into the users table in the databsae
              mysqli_query($conn, "INSERT INTO `users`(name, email, password, birthdate) VALUES('$name', '$email', '$pass', '$dob')") or die('query failed');
              $message[] = 'Registered successfully!'; // store notification message
@@ -39,6 +44,10 @@ if(isset($_POST['submit'])){
              $_SESSION["Vemail"] = $email;
              $_SESSION["VPurpose"] = "signup";
              header('location:Verify.php');
+           }else
+           {
+             $message[] = "Password Doesnt Comply with Password Policy";
+           }
           }
        }
  }

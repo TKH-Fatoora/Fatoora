@@ -7,6 +7,7 @@ session_start();
 // prevent session hijacking
 @include 'Templates/session_hijacking_prevention.php';
 
+include 'Templates/PasswordPolicy.php';
 
 if(isset($_POST['submit'])){
   // These two functions are important for extra security purpose in the signup form:
@@ -16,6 +17,7 @@ if(isset($_POST['submit'])){
 
   // fetch the  email, password & confirm password of the user
    $email = $_SESSION["Vemail"];
+   $PasswordIsCompliant = PasswordComply(filter_var($_POST['password'], FILTER_SANITIZE_STRING));
    $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
    $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
 
@@ -31,11 +33,19 @@ if(isset($_POST['submit'])){
           $message[] = 'Passwords do not match!'; // store notification message
 // _____________________________________________________________________________
        }else{
+
+         if ($PasswordIsCompliant)
+         {
+
          // if all input was valid, insert these values into the users table in the databsae
-          mysqli_query($conn, "UPDATE `users` SET password = '$pass' WHERE email = '$email'") or die('query failed');
-          $message[] = 'Password changed successfully!'; // store notification message
-          // redirect user to the login page
-          header('location:login.php');
+            mysqli_query($conn, "UPDATE `users` SET password = '$pass' WHERE email = '$email'") or die('query failed');
+            $message[] = 'Password changed successfully!'; // store notification message
+            // redirect user to the login page
+            header('location:login.php');
+          }else
+          {
+            $message[] = "Password Doesnt Comply with Password Policy";
+          }
        }
 
        }else{
