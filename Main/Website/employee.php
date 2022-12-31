@@ -19,6 +19,15 @@ if(!isset($employee_id)){
    header('location:logout.php');
 };
 
+// fetching the value for the user id
+$blocked = $_SESSION['is_blocked'];
+
+// if user id is blocked, then:
+if($blocked == 1){
+  // redirect user to log in again
+   header('location:blocked.php');
+};
+
 // _____________________________________________________________________________
 
 // if the delete user button is pressed,

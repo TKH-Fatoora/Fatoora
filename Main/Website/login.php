@@ -26,10 +26,6 @@ if(isset($_POST['submit'])){
    $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
 
 
-   $google2fa = new \PragmaRX\Google2FA\Google2FA();
-   $secret = $google2fa->generateSecretKey();
-
-
 // _____________________________________________________________________________
 
    // select all users that have the same email and password that the user just entered from the users table in the databse, if possible

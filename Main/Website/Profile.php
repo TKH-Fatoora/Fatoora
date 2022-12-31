@@ -27,6 +27,15 @@ else if(isset($_SESSION["security_id"]))
   header('location:logout.php');
 }
 
+// fetching the value for the user id
+$blocked = $_SESSION['is_blocked'];
+
+// if user id is blocked, then:
+if($blocked == 1){
+  // redirect user to log in again
+   header('location:blocked.php');
+};
+
 $selected_user = mysqli_query($conn, "SELECT * FROM `users` WHERE UserID = '$user_id'") or die('query failed');
 
 $current_user = mysqli_fetch_assoc($selected_user);
