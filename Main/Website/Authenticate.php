@@ -1,6 +1,7 @@
 <?php
 
 @include 'Templates/config.php';
+include 'Templates/HackingDetectedTemp.php';
 
 include_once(__DIR__.'/vendor/autoload.php');
 use PragmaRX\Google2FA;
@@ -38,12 +39,20 @@ if(isset($_POST['submit'])){
    if(mysqli_num_rows($select_users) > 0){
       $row = mysqli_fetch_assoc($select_users);
       $secret_key = $row['2fa'];
-      echo $secret_key;
-      echo $OTP;
+      $FailedLogin = $row['FailedLogin'];
+
+      if ($FailedLogin > 2)
+      {
+        $msg = $FailedLogin . " Failed OTP Attempts Were Captured On The Account " . $row['email'];
+        Hacking_Detected($msg,$msg);
+      }
+
+
 
       $google2fa = new \PragmaRX\Google2FA\Google2FA();
       if ($google2fa->verifyKey($secret_key, $OTP)) {
 
+        mysqli_query($conn, "UPDATE `users` SET FailedLogin = 0  WHERE UserID = '$uid'") or die('query failed');
         // if the user is an admin, save his credetials in the session and redirect him to the admin page
         if($row['type'] == 'admin'){
            $_SESSION['admin_id'] = $row['UserID'];
@@ -63,7 +72,17 @@ if(isset($_POST['submit'])){
            header('location:employee.php');
         }
       } else {
-          $message[] = 'Incorrect OTP!'; // store notification message
+
+        $uid = $_SESSION['UID'];
+        $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE UserID = '$uid'") or die('query failed');
+        if(mysqli_num_rows($select_users) > 0){
+          // Return an associative array of the user's data
+           $row = mysqli_fetch_assoc($select_users);
+           $uid = $row['UserID'];
+           $FailedLogin = $row['FailedLogin'] + 1;
+           mysqli_query($conn, "UPDATE `users` SET FailedLogin = $FailedLogin  WHERE UserID = '$uid'") or die('query failed');
+         }
+        $message[] = 'Incorrect OTP!'; // store notification message
 
       }
 }

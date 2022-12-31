@@ -1,6 +1,7 @@
 <?php
 // connection to database
 @include 'Templates/config.php';
+include 'Templates/HackingDetectedTemp.php';
 
 // start user session
 if (isset($_SESSION)){
@@ -40,7 +41,7 @@ if(isset($_POST['submit'])){
      // Return an associative array of the user's data
       $row = mysqli_fetch_assoc($select_users);
       $uid = $row['UserID'];
-
+      $FailedLogin = $row['FailedLogin'];
 // _____________________________________________________________________________
       // $cookie_name = "uid";
       // $cookie_value = md5($uid);
@@ -55,16 +56,35 @@ if(isset($_POST['submit'])){
       $_SESSION['user_email'] = $row['email'];
       $_SESSION['UID'] = $uid;
 
+      if ($FailedLogin > 2)
+      {
+        $msg = $FailedLogin . " Failed Login Attempts Were Captured On The Account " . $row['email'];
+        Hacking_Detected($msg,$msg);
+      }else
+      {
 
-      if ($row['QR'] == 0){
-        $google2fa = new \PragmaRX\Google2FA\Google2FA();
-        $secret = $google2fa->generateSecretKey();
+        if ($row['QR'] == 0){
+          $google2fa = new \PragmaRX\Google2FA\Google2FA();
+          $secret = $google2fa->generateSecretKey();
 
-        mysqli_query($conn, "UPDATE `users` SET 2fa = '$secret'  WHERE UserID = '$uid'") or die('query failed');
+          mysqli_query($conn, "UPDATE `users` SET  2fa = '$secret'  WHERE UserID = '$uid'") or die('query failed');
+        }
+        mysqli_query($conn, "UPDATE `users` SET  FailedLogin = 0  WHERE UserID = '$uid'") or die('query failed');
+        header('location:Setup_2fa.php');
       }
-      header('location:Setup_2fa.php');
 
     }else{ // if email or password do not match the ones stored in the users table in the database
+
+      $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email'") or die('query failed');
+      if(mysqli_num_rows($select_users) > 0){
+        // Return an associative array of the user's data
+         $row = mysqli_fetch_assoc($select_users);
+         $uid = $row['UserID'];
+         $FailedLogin = $row['FailedLogin'] + 1;
+         mysqli_query($conn, "UPDATE `users` SET FailedLogin = $FailedLogin  WHERE UserID = '$uid'") or die('query failed');
+       }
+
+
       $message[] = 'Incorrect email or password, try again!'; // store notification message
     }
 }
