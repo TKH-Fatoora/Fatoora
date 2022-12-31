@@ -16,7 +16,7 @@ $user_id = $_SESSION['user_id'];
 // if user id is not set, then:
 if(!isset($user_id)){
   // redirect user to log in again
-   header('location:login.php');
+   header('location:logout.php');
 };
 
 // _____________________________________________________________________________
@@ -30,7 +30,7 @@ if (
   // (B1) EXPIRED
   if (time() >= $_SESSION["token-expire"]) {
     exit("Token expired. Please reload form.");
-    header('location:login.php');
+    header('location:logout.php');
   }
 
   // of the send button is pressed,

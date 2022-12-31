@@ -6,7 +6,7 @@
    font-size: 35px;
 }
 
-.messages .container{
+.alert .container{
   display: grid;
   grid-template-columns: repeat(auto-fit, 20rem);
   gap:1.5rem;
@@ -16,7 +16,7 @@
   justify-content: center;
 }
 
-.messages .container .box{
+.alert .container .box{
   padding: 10px 15px;
   border:2px dashed black;
   background-color: white;
@@ -24,14 +24,14 @@
   border-radius: 15px;
 }
 
-.messages .container .box p{
+.alert .container .box p{
   font-size: 18px;
   color: black;
   margin-bottom: 10px;
   line-height: 1;
 }
 
-.messages .container .box p span{
+.alert .container .box p span{
   color: #00918b;
 }
 
@@ -46,22 +46,22 @@
  padding: 8px;
  box-sizing: border-box;
  min-height: 45px;
- height: 55px;
+ height: 80px;
 }
 
-.messages .container .box .btn{
-  width: 25%;
+.alert .container .box .btn{
+  width: 32.5%;
   padding: 5px 0;
   border: 2px solid black;
   background: #ff57a2;
   border-radius: 7px;
   margin-bottom: 15px;
-  font-size: 15px;
+  font-size: 13px;
   color: white;
   font-weight: bold;
 }
 
-.messages .container .box .btn:hover{
+.alert .container .box .btn:hover{
   background: #f72585;
   cursor: pointer;
 }

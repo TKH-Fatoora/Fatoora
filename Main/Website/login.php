@@ -43,11 +43,7 @@ if(isset($_POST['submit'])){
       $uid = $row['UserID'];
       $FailedLogin = $row['FailedLogin'];
 // _____________________________________________________________________________
-      // $cookie_name = "uid";
-      // $cookie_value = md5($uid);
-      //
-      // setcookie($cookie_name, $cookie_value, time() + (86400), "/"); // 86400 = 1 day
-// _____________________________________________________________________________
+
       $_SESSION["csrf"] = bin2hex(random_bytes(32));
       $_SESSION["csrf-expire"] = time() + 3600; // 1 hour = 3600 secs
 // _____________________________________________________________________________

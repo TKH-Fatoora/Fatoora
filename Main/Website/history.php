@@ -16,7 +16,7 @@ $user_id = $_SESSION['user_id'];
 // if user id is not set, then:
 if(!isset($user_id)){
   // redirect user to log in again
-   header('location:login.php');
+   header('location:logout.php');
 };
  ?>
 
@@ -74,7 +74,7 @@ if(!isset($user_id)){
             if(mysqli_num_rows($select_date_expenses) > 0){
               // Return an associative array of the user's data
                while($expense = mysqli_fetch_assoc($select_date_expenses)){
-             ?>
+             ?>logout
 <!-- _______________________________________________________________________ -->
             <tr class="rowitem">
               <td class="itemtext"><?php echo htmlspecialchars($expense['name']); ?></td>

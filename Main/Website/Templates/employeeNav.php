@@ -64,7 +64,7 @@ if (!isset($_SESSION)) {
         <p>Name: <span class="acc-info"><?php echo htmlspecialchars($_SESSION['user_name']); ?></span></p>
         <p>Email: <span class="acc-info"><?php echo htmlspecialchars($_SESSION['user_email']); ?></span></p>
 
-        <p class="account-options"><a href='Profile.php'>Edit Account</a> | <a href="logout.php">Log out</a></p>
+        <p class="account-options"><a href='Profile.php'>View Account</a> | <a href="logout.php">Log out</a></p>
 
       </div>
 

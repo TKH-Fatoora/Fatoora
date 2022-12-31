@@ -16,7 +16,7 @@ $employee_id = $_SESSION['employee_id'];
 // if employee id is not set, then:
 if(!isset($employee_id)){
   // redirect user to log in again
-   header('location:login.php');
+   header('location:logout.php');
 };
 
 // _____________________________________________________________________________
@@ -45,13 +45,13 @@ if(isset($_POST['delete_message'])){
     <!-- linking my fontawesome kit to be able to add icons  -->
     <script src="https://kit.fontawesome.com/51f1a2fdea.js" crossorigin="anonymous"></script>
     <!-- css style sheet link -->
-    <link rel="stylesheet" href="CSS/employee_styles.css">
+    <link rel="stylesheet" href="CSS/security_styles.css">
   </head>
 
   <body>
     <?php @include 'Templates/employeeNav.php'; ?>
 
-    <section class="messages">
+    <section class="alert">
      <h1 class="title">Messages</h1>
      <div class="container">
 
@@ -72,7 +72,7 @@ if(isset($_POST['delete_message'])){
         <p>User id: <span><?php echo htmlspecialchars($fetch_message['UserID']); ?></span></p>
         <p>Email: <span><?php echo htmlspecialchars($fetch_message['email']); ?></span></p>
         <p>Subject: <span><b><?php echo htmlspecialchars($fetch_message['subject']); ?></b></span></p>
-        <textarea class="content"><?php echo htmlspecialchars($fetch_message['content']); ?></textarea>
+        <textarea class="content" disabled><?php echo htmlspecialchars($fetch_message['content']); ?></textarea>
 
         <form class="" action="employee.php" method="post">
           <input type="hidden" name="MessageID" value="<?php echo htmlspecialchars($fetch_message['MessageID']); ?>">

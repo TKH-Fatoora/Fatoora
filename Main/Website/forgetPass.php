@@ -41,7 +41,7 @@ if(isset($_POST['submit'])){
             mysqli_query($conn, "UPDATE `users` SET password = '$pass' WHERE email = '$email'") or die('query failed');
             $message[] = 'Password changed successfully!'; // store notification message
             // redirect user to the login page
-            header('location:login.php');
+            header('location:logout.php');
           }else
           {
             $message[] = "Password Doesnt Comply with Password Policy";

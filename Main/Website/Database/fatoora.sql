@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2022 at 02:55 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 7.4.30
+-- Generation Time: Dec 31, 2022 at 03:59 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `expenses` (
   `amount` double NOT NULL,
   `note` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `expenses`
@@ -77,7 +77,7 @@ CREATE TABLE `message` (
   `subject` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `UserID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `message`
@@ -101,7 +101,7 @@ CREATE TABLE `secalerts` (
   `Category` varchar(255) NOT NULL,
   `Severity` int(11) NOT NULL,
   `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `secalerts`
@@ -127,20 +127,22 @@ CREATE TABLE `users` (
   `QR` int(11) NOT NULL DEFAULT 0,
   `VOTP` int(11) NOT NULL,
   `Verified` int(11) NOT NULL DEFAULT 0,
-  `FailedLogin` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `FailedLogin` int(11) NOT NULL DEFAULT 0,
+  `blocked` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `name`, `email`, `password`, `birthdate`, `type`, `2fa`, `QR`, `VOTP`, `Verified`, `FailedLogin`) VALUES
-(7, 'nour', 'n.sharaky@outlook.com', 'ccbc1770bb10486495d127a7d65c252b', '2022-11-07', 'user', '', 0, 0, 0, 0),
-(8, 'nour', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2022-11-07', 'user', '', 0, 0, 0, 0),
-(9, 'nour', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', '2022-11-08', 'user', 'GM2FBZOWUTQ6MRD3', 0, 0, 0, 0),
-(10, 'ahmed', 'a@a.com', '0cc175b9c0f1b6a831c399e269772661', '2022-11-08', 'admin', 'BTJHDRG73DQDIUFL', 0, 0, 0, 0),
-(19, 'Ahmed Basem', 'a23basem@gmail.com', '187ef4436122d1cc2f40dc2b92f0eba0', '2003-02-23', 'user', 'I4U66HX37ISQ4YE5', 1, 0, 1, 4),
-(21, 'Ahmed Basem', 'ahmedbasemegy@gmail.com', '0cc175b9c0f1b6a831c399e269772661', '2003-03-23', 'user', '', 0, 0, 1, 0);
+INSERT INTO `users` (`UserID`, `name`, `email`, `password`, `birthdate`, `type`, `2fa`, `QR`, `VOTP`, `Verified`, `FailedLogin`, `blocked`) VALUES
+(7, 'nour', 'n.sharaky@outlook.com', 'ccbc1770bb10486495d127a7d65c252b', '2022-11-07', 'user', '', 0, 0, 0, 0, 0),
+(8, 'nour', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2022-11-07', 'user', '', 0, 0, 0, 0, 0),
+(9, 'nour', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', '2022-11-08', 'user', 'GM2FBZOWUTQ6MRD3', 0, 0, 0, 0, 0),
+(10, 'ahmed', 'a@a.com', '0cc175b9c0f1b6a831c399e269772661', '2022-11-08', 'admin', 'BTJHDRG73DQDIUFL', 0, 0, 0, 0, 0),
+(19, 'Ahmed Basem', 'a23basem@gmail.com', '187ef4436122d1cc2f40dc2b92f0eba0', '2003-02-23', 'user', 'I4U66HX37ISQ4YE5', 1, 0, 1, 8, 0),
+(21, 'Ahmed Basem', 'ahmedbasemegy@gmail.com', '0cc175b9c0f1b6a831c399e269772661', '2003-03-23', 'user', '', 0, 0, 1, 0, 0),
+(30, 'Security Admin', 'nour.sharaky.ns@gmail.com', '92fe1426c7bf80b12c0c2d1dc94ff4a3', '2022-12-31', 'security', 'CLHVJQS2BU6XKE7Y', 1, 0, 1, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -197,7 +199,7 @@ ALTER TABLE `secalerts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

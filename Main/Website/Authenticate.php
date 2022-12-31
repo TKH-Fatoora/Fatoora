@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
 
   // _____________________________________________________________________________
 
-        // if the user is not an admin, save his credetials in the session and redirect him to the home page
+
         }elseif($row['type'] == 'user'){
            $_SESSION['user_id'] = $row['UserID'];
            header('location:home.php');
@@ -71,6 +71,15 @@ if(isset($_POST['submit'])){
            $_SESSION['employee_id'] = $row['UserID'];
            header('location:employee.php');
         }
+  // _____________________________________________________________________________
+
+
+      }elseif($row['type'] == 'security'){
+           $_SESSION['security_id'] = $row['UserID'];
+           header('location:security.php');
+        }
+
+  // _____________________________________________________________________________
       } else {
 
         $uid = $_SESSION['UID'];
@@ -86,7 +95,7 @@ if(isset($_POST['submit'])){
 
       }
 }
-}
+
  ?>
 
 

@@ -16,7 +16,7 @@ $user_id = $_SESSION['user_id'];
 // if user id is not set, then:
 if(!isset($user_id)){
   // redirect user to log in again
-   header('location:login.php');
+   header('location:logout.php');
 };
 
 

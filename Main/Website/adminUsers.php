@@ -19,7 +19,7 @@ $admin_id = $_SESSION['admin_id'];
 // if admin id is not set, then:
 if(!isset($admin_id)){
   // redirect user to log in again
-   header('location:login.php');
+   header('location:logout.php');
 };
 
 if (
@@ -31,7 +31,7 @@ if (
   // CSRF token EXPIRED
   if (time() >= $_SESSION["token-expire"]) {
     exit("Token expired. Please reload form.");
-    header('location:login.php');
+    header('location:logout.php');
   }
 
   // _____________________________________________________________________________
