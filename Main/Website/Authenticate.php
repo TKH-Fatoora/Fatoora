@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
            header('location:security.php');
         }
 
-        $_SESSION['is_blocked'] = $row['Blocked'];
+        $_SESSION['is_blocked'] = $row['blocked'];
 
   // _____________________________________________________________________________
       } else {
