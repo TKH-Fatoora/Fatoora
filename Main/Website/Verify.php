@@ -2,7 +2,7 @@
 
 // connection to database
 include 'Templates/config.php';
-require("Email.php");
+include 'Templates/Email.php';
 
 // start user session
 session_start();
