@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
       if ($FailedLogin > 2)
       {
         $msg = $FailedLogin . " Failed Login Attempts Were Captured On The Account " . $row['email'];
-        Hacking_Detected($msg,$msg);
+        Hacking_Detected($msg,$uid,$msg,"Login",1);
       }else
       {
 

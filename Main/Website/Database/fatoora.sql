@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2022 at 01:50 PM
+-- Generation Time: Dec 31, 2022 at 02:55 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -91,6 +91,28 @@ INSERT INTO `message` (`MessageID`, `email`, `subject`, `content`, `UserID`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `secalerts`
+--
+
+CREATE TABLE `secalerts` (
+  `AlertID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `Content` varchar(255) NOT NULL,
+  `Category` varchar(255) NOT NULL,
+  `Severity` int(11) NOT NULL,
+  `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `secalerts`
+--
+
+INSERT INTO `secalerts` (`AlertID`, `UserID`, `Content`, `Category`, `Severity`, `TimeStamp`) VALUES
+(1, 19, '4 Failed Login Attempts Were Captured On The Account a23basem@gmail.com', 'Login', 1, '2022-12-31 13:54:46');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -117,7 +139,7 @@ INSERT INTO `users` (`UserID`, `name`, `email`, `password`, `birthdate`, `type`,
 (8, 'nour', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2022-11-07', 'user', '', 0, 0, 0, 0),
 (9, 'nour', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', '2022-11-08', 'user', 'GM2FBZOWUTQ6MRD3', 0, 0, 0, 0),
 (10, 'ahmed', 'a@a.com', '0cc175b9c0f1b6a831c399e269772661', '2022-11-08', 'admin', 'BTJHDRG73DQDIUFL', 0, 0, 0, 0),
-(19, 'Ahmed Basem', 'a23basem@gmail.com', '187ef4436122d1cc2f40dc2b92f0eba0', '2003-02-23', 'user', 'I4U66HX37ISQ4YE5', 1, 0, 1, 8),
+(19, 'Ahmed Basem', 'a23basem@gmail.com', '187ef4436122d1cc2f40dc2b92f0eba0', '2003-02-23', 'user', 'I4U66HX37ISQ4YE5', 1, 0, 1, 4),
 (21, 'Ahmed Basem', 'ahmedbasemegy@gmail.com', '0cc175b9c0f1b6a831c399e269772661', '2003-03-23', 'user', '', 0, 0, 1, 0);
 
 --
@@ -135,6 +157,12 @@ ALTER TABLE `expenses`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`MessageID`);
+
+--
+-- Indexes for table `secalerts`
+--
+ALTER TABLE `secalerts`
+  ADD PRIMARY KEY (`AlertID`);
 
 --
 -- Indexes for table `users`
@@ -158,6 +186,12 @@ ALTER TABLE `expenses`
 --
 ALTER TABLE `message`
   MODIFY `MessageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `secalerts`
+--
+ALTER TABLE `secalerts`
+  MODIFY `AlertID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
