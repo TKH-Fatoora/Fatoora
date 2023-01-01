@@ -27,10 +27,12 @@ html, body{
   box-shadow: 0 10px 15px rgba(0,0,0,0.2);
   border: 4px dashed black
 }
+
 .statistics .back{
   display: flex;
   justify-content: center;
 }
+
 .statistics .btn{
   display: block;
   max-width: 150px;
@@ -45,7 +47,6 @@ html, body{
   color: white;
   font-weight: bold;
   text-decoration: none;
-
 }
 
 .statistics .btn:hover{
@@ -57,6 +58,7 @@ html, body{
   .container{
     flex-direction: column;
   }
+  
   .pieChart{
     width: 60%;
     margin-bottom: 20px

@@ -3,7 +3,6 @@
   --white: #ffffff;
 }
 
-
 *::selection{
    background-color: #c879ff;
    color: white;
@@ -129,6 +128,7 @@ body{
   display: none;
   animation: fadeIn .2s linear;
 }
+
 .header .flex .account-options{
   text-align: center;
 }
@@ -158,6 +158,7 @@ body{
      font-size: 19px;
      padding: 15px 15px;
   }
+
   .header .flex .icons > *{
      font-size: 20px;
   }
@@ -181,6 +182,7 @@ body{
   #menu-btn{
       display: inline-block;
    }
+
    .header .flex .navbar.active{
      display: block;
    }
@@ -201,6 +203,7 @@ body{
    .header .flex .navbar .navbar-ul .navbar-li{
      width: 100%;
    }
+   
    .header .flex .navbar .navbar-ul .navbar-li a{
      margin-right: 10%
    }

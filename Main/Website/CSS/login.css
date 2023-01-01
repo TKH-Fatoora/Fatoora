@@ -3,11 +3,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: #ACDEE4;
   background-size: cover;
   font-family: sans-serif;
 }
+
 .login-wrapper {
   height: 100vh;
   width: 100vw;
@@ -15,6 +17,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .form {
   position: relative;
   width: 100%;
@@ -25,6 +28,7 @@ body {
   color: #fff;
   box-shadow: 0 15px 25px rgba(0,0,0,0.5);
 }
+
 .form::before {
   content:'';
   position: absolute;
@@ -38,6 +42,7 @@ body {
   border-radius: 10px;
   pointer-events: none;
 }
+
 .form .AvatarIcon {
   position: absolute;
   top: -50px;
@@ -46,15 +51,18 @@ body {
   background: rgba(255,255,255, 0.8);
   border-radius: 50%;
 }
+
 .form h2 {
   text-align: center;
   letter-spacing: 1px;
   margin-bottom: 2rem;
   color: #58BDC9;
 }
+
 .form .input-group {
   position: relative;
 }
+
 .form .input-group input {
   width: 100%;
   padding: 10px 0;
@@ -67,6 +75,7 @@ body {
   background-color: transparent;
   color: inherit;
 }
+
 .form .input-group label {
   position: absolute;
   top: 0;
@@ -76,6 +85,7 @@ body {
   pointer-events: none;
   transition: .3s ease-out;
 }
+
 .form .input-group input:focus + label,
 .form .input-group input:valid + label {
   transform: translateY(-18px);
@@ -115,12 +125,14 @@ body {
 {
   width:100%;
 }
+
 .Buttons
 {
   display: flex;
   align-items: left;
   flex-direction: row;
 }
+
 .mssg{
   color: inherit;
   text-decoration: none;
