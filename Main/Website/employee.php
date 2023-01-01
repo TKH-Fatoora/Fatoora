@@ -19,12 +19,12 @@ if(!isset($employee_id)){
    header('location:logout.php');
 };
 
-// fetching the value for the user id
+// fetching the value for the user account status
 $blocked = $_SESSION['is_blocked'];
 
 // if user id is blocked, then:
 if($blocked == 1){
-  // redirect user to log in again
+  // redirect user to blocked page
    header('location:blocked.php');
 };
 
@@ -32,10 +32,13 @@ if($blocked == 1){
 
 // if the delete user button is pressed,
 if(isset($_POST['delete_message'])){
+
    // fetch the id of the selected user
    $delete_id = $_POST['MessageID'];
-   // delete the selected user from the users table in the database
+
+   // delete the selected message from the message table in the database
    mysqli_query($conn, "DELETE FROM `message` WHERE MessageID = '$delete_id'") or die('query failed');
+
    $message[] = 'Message has been deleted!'; // store notification message
    header('location:employee.php'); //reloads the updated page
 }
@@ -48,19 +51,21 @@ if(isset($_POST['delete_message'])){
   <head>
     <meta charset="utf-8">
     <title>Inquiries</title>
+    <!-- css style sheet link -->
+    <link rel="stylesheet" href="CSS/security_styles.css">
     <!-- set content's width according to current screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- linking my fontawesome kit to be able to add icons  -->
+    <!-- linking fontawesome kit to be able to add icons  -->
     <script src="https://kit.fontawesome.com/51f1a2fdea.js" crossorigin="anonymous"></script>
-    <!-- css style sheet link -->
-    <link rel="stylesheet" href="CSS/security_styles.css">
   </head>
+
+<!-- _______________________________________________________________________ -->
 
   <body>
     <?php @include 'Templates/employeeNav.php'; ?>
 
-    <section class="alert">
+    <section class="messages">
      <h1 class="title">Messages</h1>
      <div class="container">
 
@@ -75,6 +80,8 @@ if(isset($_POST['delete_message'])){
           while($fetch_message = mysqli_fetch_assoc($select_message)){
       ?>
 
+<!-- _______________________________________________________________________ -->
+
       <!-- Printing out each user's data and message -->
       <div class="box">
         <!-- htmlspecialchars prevents against xss attacks -->
@@ -82,6 +89,8 @@ if(isset($_POST['delete_message'])){
         <p>Email: <span><?php echo htmlspecialchars($fetch_message['email']); ?></span></p>
         <p>Subject: <span><b><?php echo htmlspecialchars($fetch_message['subject']); ?></b></span></p>
         <textarea class="content" disabled><?php echo htmlspecialchars($fetch_message['content']); ?></textarea>
+
+<!-- _______________________________________________________________________ -->
 
         <form class="" action="employee.php" method="post">
           <input type="hidden" name="MessageID" value="<?php echo htmlspecialchars($fetch_message['MessageID']); ?>">
