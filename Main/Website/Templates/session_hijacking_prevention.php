@@ -2,13 +2,15 @@
 // Does IP Address match?
 if ($_SERVER['REMOTE_ADDR'] != $_SESSION['ipaddress'])
 {
-session_unset();
-session_destroy();
+  // if not, unset and destroy the user's session
+  session_unset();
+  session_destroy();
 }
 
 // Does user agent match?
 if ($_SERVER['HTTP_USER_AGENT'] != $_SESSION['useragent'])
 {
+  // if not, unset and destroy the user's session
   session_unset();
   session_destroy();
 }
@@ -16,11 +18,13 @@ if ($_SERVER['HTTP_USER_AGENT'] != $_SESSION['useragent'])
 // Is the last access over an hour ago?
 if (time() > ($_SESSION['lastaccess'] + 3600))
 {
+  // if not, unset and destroy the user's session
   session_unset();
   session_destroy();
 }
 else
 {
+  // store last access time
   $_SESSION['lastaccess'] = time();
 }
 ?>

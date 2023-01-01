@@ -1,3 +1,4 @@
+<!-- css style sheet link -->
 <link rel="stylesheet" href="CSS/footer_styles.css">
 
 

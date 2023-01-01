@@ -1,22 +1,28 @@
 <?php
+// start user session
 if (!isset($_SESSION)) {
   session_start();
 }
  ?>
+ <!-- ______________________________________________________________________ -->
 
+<!-- css style sheet link -->
+ <link rel="stylesheet" href="CSS/navbar_styles.css">
+ <!-- set content's width according to current screen width -->
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <!-- linking fontawesome kit to be able to add icons  -->
 <script src="https://kit.fontawesome.com/4a82e10df4.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="CSS/navbar_styles.css">
+<!-- linking font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo">
-<!-- set content's width according to current screen width -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+<!-- ______________________________________________________________________ -->
 
 <!-- Navigation Bar -->
 <header class="header">
     <div class="flex">
 
-      <!-- Title -->
+      <!-- logo -->
       <div class="logo">
         <svg class="logo-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489.003 489.003" style="enable-background:new 0 0 489.003 489.003;" xml:space="preserve">
           <g>
@@ -49,7 +55,7 @@ if (!isset($_SESSION)) {
 
 <!-- _______________________________________________________________________ -->
 
-      <!-- user pages link -->
+      <!-- admin pages link -->
       <nav class="navbar">
         <!-- Navigation Bar Unordered List -->
         <ul class="navbar-ul">
@@ -76,7 +82,7 @@ if (!isset($_SESSION)) {
       <div class="account">
         <p>Name: <span class="acc-info"><?php echo htmlspecialchars($_SESSION['user_name']); ?></span></p>
         <p>Email: <span class="acc-info"><?php echo htmlspecialchars($_SESSION['user_email']); ?></span></p>
-
+        <!-- view account info or log out -->
         <p class="account-options"><a href='Profile.php'>View Account</a> | <a href="logout.php">Log out</a></p>
 
       </div>
@@ -85,4 +91,5 @@ if (!isset($_SESSION)) {
     </div>
 </header>
 
+<!-- responsive js file link -->
 <script src="Scripts/nav.js" type="text/javascript"></script>

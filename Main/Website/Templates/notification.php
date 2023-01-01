@@ -1,8 +1,9 @@
 
+<!-- css style sheet link -->
 <link rel="stylesheet" href="CSS/notification.css">
 
 
-  <?php
+<?php
   // if there is something stored in the message array then:
   if(isset($message)){
     // loop over each message
@@ -16,4 +17,4 @@
         ';
      }
   }
-  ?>
+?>
