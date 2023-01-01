@@ -13,13 +13,13 @@ $admin_id = $_SESSION['selected_user_id'];
 
 // _____________________________________________________________________________
 
-// if user id is not set, then:
+// if admin id is not set, then:
 if(!isset($admin_id)){
-  // redirect user to log in again
+  /// log user out
    header('location:logout.php');
 };
 
-// fetching the value for the user id
+// fetching the value for the selected user id
 $selected_user_id = $_SESSION['selected_user_id'];
 
 // _____________________________________________________________________________
@@ -30,20 +30,31 @@ $selected_user_id = $_SESSION['selected_user_id'];
   <head>
     <meta charset="utf-8">
     <title>User Statistics</title>
+    <!-- css style sheet link -->
     <link rel="stylesheet" href="CSS/statistics.css">
+    <!-- chart.js link -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- set content's width according to current screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!--_______________________________________________________________________  -->
+
   </head>
   <body>
     <?php include 'Templates/notification.php' ?>
     <?php include 'Templates/adminNav.php' ?>
 
 <!--_______________________________________________________________________  -->
+
   <section class="statistics">
-    <h1>Statistics for UID: <span class="" ><?php echo htmlspecialchars($selected_user_id)?></span></h1>
+    <!-- print out selected user id -->
+    <h1>Statistics for UID: <span><?php echo htmlspecialchars($selected_user_id)?></span></h1>
     <div class="container">
 
-      <!--_______________________________________________________________________  -->
+<!--_______________________________________________________________________  -->
       <?php
+      // select and calculate the totals per category for the selected user
       $select_user_categories = mysqli_query($conn, "SELECT SUM(amount) as ctotal, category FROM expenses WHERE UserID = '$selected_user_id' group by category;") or die('query failed');
 
       $category = '';
@@ -56,12 +67,10 @@ $selected_user_id = $_SESSION['selected_user_id'];
           $category = $category.$row['category'].', ';
           $ctotal = $ctotal.$row['ctotal'].', ';
         }}
-
-        // for testing only
-        // echo $category;
-        // echo $ctotal;
         ?>
+<!--_______________________________________________________________________  -->
 
+        <!-- input the stored values  -->
         <input type="hidden" name="" id="category" value="<?php echo htmlspecialchars($category) ?>">
         <input type="hidden" name="" id="ctotal" value="<?php echo htmlspecialchars($ctotal) ?>">
 
@@ -69,12 +78,14 @@ $selected_user_id = $_SESSION['selected_user_id'];
 
         <div class="pieChart">
           <h3>Expenses per Category</h3>
+          <!-- pie chart 1 -->
           <canvas id="myChart"></canvas>
         </div>
 
         <!--_______________________________________________________________________  -->
 
         <?php
+        // select and calculate the totals per payment method for the selected user
         $select_user_method = mysqli_query($conn, "SELECT SUM(amount) as mtotal, method FROM expenses WHERE UserID = '$selected_user_id' group by method;") or die('query failed');
 
         $method = '';
@@ -87,24 +98,24 @@ $selected_user_id = $_SESSION['selected_user_id'];
             $method = $method.$row['method'].', ';
             $mtotal = $mtotal.$row['mtotal'].', ';
           }}
-
-          // for testing only
-          // echo $method;
-          // echo $mtotal;
           ?>
 
+<!--_______________________________________________________________________  -->
+
+          <!-- input the stored values  -->
           <input type="hidden" name="" id="method" value="<?php echo htmlspecialchars($method); ?>">
           <input type="hidden" name="" id="mtotal" value="<?php echo htmlspecialchars($mtotal); ?>">
 
-          <!--_______________________________________________________________________  -->
+<!--_______________________________________________________________________  -->
 
 
           <div class="pieChart">
             <h3>Expenses per Payment Method</h3>
+            <!-- pie chart 2 -->
             <canvas id="myChart2"></canvas>
           </div>
 
-          <!--_______________________________________________________________________  -->
+<!--_______________________________________________________________________  -->
 
     </div>
     <div class="back">
