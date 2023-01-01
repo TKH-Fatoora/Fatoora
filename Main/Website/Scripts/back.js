@@ -1,5 +1,5 @@
-// onClick="javascript:history.go(-1)
 
+//  if back button is pressed go back one page 
 document.getElementById("back-btn").onclick = () => {
   history.go(-1)
 }
