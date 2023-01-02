@@ -151,23 +151,6 @@ if(isset($_POST['submit'])){
          }
         $message[] = 'Incorrect OTP!'; // store notification message
       }
-<<<<<<< HEAD
-    }
-  }
-
- ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Meta Data -->
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <!-- Stylesheet -->
- <link rel="stylesheet" href="CSS/login.css">
- <!-- title  -->
- <title>Login Page</title>
-=======
 }
 }
  ?>
@@ -183,7 +166,6 @@ if(isset($_POST['submit'])){
    <!-- set content's width according to current screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
->>>>>>> 16f34c97c59c9b08599195a0027643ed65a654e2
 </head>
 
 <!-- _______________________________________________________________________ -->
@@ -191,7 +173,7 @@ if(isset($_POST['submit'])){
 
  <!-- Notifications -->
  <?php include 'Templates/notification.php' ?>
- 
+
  <!-- _______________________________________________________________________ -->
 
  <!-- Authentication DIV -->
