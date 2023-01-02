@@ -91,26 +91,30 @@ if(isset($_POST['submit'])){
            mysqli_query($conn, "UPDATE `users` SET FailedLogin = $FailedLogin  WHERE UserID = '$uid'") or die('query failed');
          }
         $message[] = 'Incorrect OTP!'; // store notification message
-
       }
 }
 }
-
  ?>
-
+ <!-- _______________________________________________________________________ -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <link rel="stylesheet" href="CSS/login.css">
- <title>Login Page</title>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <!-- stylesheet link -->
+  <link rel="stylesheet" href="CSS/login.css">
+   <!-- set content's width according to current screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
+
+<!-- _______________________________________________________________________ -->
 <body>
 
  <?php include 'Templates/notification.php' ?>
+ 
+ <!-- _______________________________________________________________________ -->
 
  <div class="login-wrapper">
    <form action="Authenticate.php" method="POST" class="form">

@@ -30,12 +30,12 @@ if($blocked == 1){
 
 // _____________________________________________________________________________
 
-// if CSRF token is set and is equal to the CSRF token stored in the session
+// check for CSRF token
 if (
-  isset($_POST["csrf"]) &&
-  isset($_SESSION["csrf"]) &&
-  isset($_SESSION["csrf-expire"]) &&
-  $_SESSION["csrf"]==$_POST["csrf"]
+  isset($_POST["csrf"]) &&            // Check for CSRF token from the form
+  isset($_SESSION["csrf"]) &&         // Check for CSRF token from the session
+  isset($_SESSION["csrf-expire"]) &&  // Check for CSRF token expiration from the session
+  $_SESSION["csrf"]==$_POST["csrf"]   // Check if client token matches server stored token
 ) {
   // if CSRF token has expired, log the user out
   if (time() >= $_SESSION["token-expire"]) {
