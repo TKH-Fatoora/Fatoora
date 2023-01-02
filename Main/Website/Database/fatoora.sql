@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2022 at 03:59 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Jan 02, 2023 at 11:07 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,31 +39,14 @@ CREATE TABLE `expenses` (
   `amount` double NOT NULL,
   `note` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `expenses`
 --
 
 INSERT INTO `expenses` (`exID`, `UserID`, `date`, `method`, `category`, `name`, `amount`, `note`, `image`) VALUES
-(14, 0, '2022-11-07', 'debit', 'health', 'Sharaky', 0, 'd', 'none.jpg'),
-(15, 0, '2022-11-07', 'credit', 'selfdevelopment', 'name', 0, 'cd', 'name.jpg'),
-(16, 9, '2022-11-06', 'cash', 'food', 'Tabali', 0, 'Fries', 'none.jpg'),
-(17, 9, '2022-11-03', 'prepaid', 'food', 'Mcdonalds', 0, 'ice cream', 'none.jpg'),
-(18, 9, '2022-11-03', 'prepaid', 'food', 'pick n pack', 0, 'pizza', 'none.jpg'),
-(19, 9, '2022-11-08', 'credit', 'shopping', 'H&M', 0, 't-shirt', 'none.jpg'),
-(20, 10, '2022-11-08', 'debit', 'coffee', 'starbucks', 23242.11, 'latte', 'none.jpg'),
-(21, 9, '2022-11-08', 'other', 'selfdevelopment', 'diwan', 0, 'all the bright places', 'none.jpg'),
-(22, 9, '2022-11-08', 'debit', 'shopping', 'idk', 0, 'oh no', 'none.jpg'),
-(23, 10, '2022-11-07', 'cash', 'shopping', 'waw', 0, 'a', 'none.jpg'),
-(24, 9, '2022-11-06', 'credit', 'coffee', 'vdf', 0, 'dgag', 'none.jpg'),
-(26, 9, '2022-11-03', 'other', 'entertainment', 'test', 123, '', 'none.jpg'),
-(27, 9, '2022-11-01', 'prepaid', 'selfdevelopment', 'book', 56, 'abc', 'none.jpg'),
-(29, 9, '2022-11-04', 'debit', 'other', 'nour', 34, '', 'none.jpg'),
-(30, 9, '2022-12-02', 'credit', 'entertainment', 'name', 89, '', 'none.jpg'),
-(31, 9, '2022-11-24', 'credit', 'transportation', 'hcg', 89, '', 'none.jpg'),
-(32, 9, '2022-11-27', 'cash', 'food', 'n', 1234, '', 'none.jpg'),
-(33, 11, '2022-03-02', 'credit', 'transportation', 'Uber', 150, 'From Home To Uni', 'Uber.jpg');
+(34, 33, '2023-01-03', 'credit', 'transportation', 'Uber', 230, 'Rehab > TKH', 'none.jpg');
 
 -- --------------------------------------------------------
 
@@ -77,16 +60,7 @@ CREATE TABLE `message` (
   `subject` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `UserID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`MessageID`, `email`, `subject`, `content`, `UserID`) VALUES
-(1, 'v', 'v', '', 1),
-(2, 'v', 'v', 'v', 1),
-(3, 'nour', 'f', 's', 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -101,14 +75,23 @@ CREATE TABLE `secalerts` (
   `Category` varchar(255) NOT NULL,
   `Severity` int(11) NOT NULL,
   `TimeStamp` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `secalerts`
 --
 
 INSERT INTO `secalerts` (`AlertID`, `UserID`, `Content`, `Category`, `Severity`, `TimeStamp`) VALUES
-(1, 19, '4 Failed Login Attempts Were Captured On The Account a23basem@gmail.com', 'Login', 1, '2022-12-31 13:54:46');
+(1089, 32, 'No CSRF Token in Use to Access page: Admin Users ', 'Insufficent Access', 3, '2023-01-02 21:31:48'),
+(1090, 32, 'No CSRF Token in Use to Access page: Admin Users ', 'Insufficent Access', 3, '2023-01-02 21:32:06'),
+(1091, 33, 'Unauthorized Access to Admin Users pasge Was Attempted', 'Insufficent Access', 2, '2023-01-02 21:37:14'),
+(1092, 33, 'No CSRF Token in Use to Access page: Admin Users ', 'Insufficent Access', 3, '2023-01-02 21:37:14'),
+(1093, 33, 'Unauthorized Access to Admin Users pasge Was Attempted', 'Insufficent Access', 2, '2023-01-02 21:37:55'),
+(1094, 32, 'No CSRF Token in Use to Access page: Admin Users ', 'Insufficent Access', 3, '2023-01-02 21:38:30'),
+(1095, 32, 'Unauthorized Access to Admin Users pasge Was Attempted', 'Insufficent Access', 2, '2023-01-02 21:46:54'),
+(1096, 32, 'No CSRF Token in Use to Access page: Admin Users ', 'Insufficent Access', 3, '2023-01-02 21:46:54'),
+(1097, 32, 'Unauthorized Access to Admin Users pasge Was Attempted', 'Insufficent Access', 2, '2023-01-02 21:47:00'),
+(1098, 0, 'Unauthorized Access Attempt to Authentication page', 'Insufficent Access', 2, '2023-01-02 21:47:01');
 
 -- --------------------------------------------------------
 
@@ -129,20 +112,17 @@ CREATE TABLE `users` (
   `Verified` int(11) NOT NULL DEFAULT 0,
   `FailedLogin` int(11) NOT NULL DEFAULT 0,
   `blocked` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`UserID`, `name`, `email`, `password`, `birthdate`, `type`, `2fa`, `QR`, `VOTP`, `Verified`, `FailedLogin`, `blocked`) VALUES
-(7, 'nour', 'n.sharaky@outlook.com', 'ccbc1770bb10486495d127a7d65c252b', '2022-11-07', 'user', '', 0, 0, 0, 0, 0),
-(8, 'nour', 'user@gmail.com', 'ee11cbb19052e40b07aac0ca060c23ee', '2022-11-07', 'user', '', 0, 0, 0, 0, 0),
-(9, 'nour', 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', '2022-11-08', 'user', 'GM2FBZOWUTQ6MRD3', 0, 0, 0, 0, 0),
-(10, 'ahmed', 'a@a.com', '0cc175b9c0f1b6a831c399e269772661', '2022-11-08', 'admin', 'BTJHDRG73DQDIUFL', 0, 0, 0, 0, 0),
-(19, 'Ahmed Basem', 'a23basem@gmail.com', '187ef4436122d1cc2f40dc2b92f0eba0', '2003-02-23', 'user', 'I4U66HX37ISQ4YE5', 1, 0, 1, 8, 0),
-(21, 'Ahmed Basem', 'ahmedbasemegy@gmail.com', '0cc175b9c0f1b6a831c399e269772661', '2003-03-23', 'user', '', 0, 0, 1, 0, 0),
-(30, 'Security Admin', 'nour.sharaky.ns@gmail.com', '92fe1426c7bf80b12c0c2d1dc94ff4a3', '2022-12-31', 'security', 'CLHVJQS2BU6XKE7Y', 1, 0, 1, 0, 0);
+(32, 'Nour Sharaky', 'Ns00149@tkh.edu.eg', '3438663f0c7474dd81ac867f87a07e5b', '2003-06-27', 'admin', 'ZRWYSHKBX3V34FYA', 1, 0, 1, 0, 0),
+(33, 'Ahmed Basem', 'AA00188@tkh.edu.eg', '882538dd22ee34b24e8b677f4d37032a', '2003-03-23', 'security', 'ZYHIUJNSNXAJKSCI', 1, 0, 1, 0, 0),
+(34, 'Ahmed Nader', 'AH00355@tkh.edu.eg', 'b499986e2dd1642db8828243938d179c', '2003-06-11', 'employee', 'TZBQ5UYKJ7NPOZCM', 1, 0, 1, 0, 0),
+(35, 'Ziad Amin', 'ZA00056@tkh.edu.eg', '3404681cf0d61715d7914300bc8bb1cc', '2003-01-26', 'user', 'PS6CIZWTKATDWXWD', 1, 0, 1, 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -181,7 +161,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `exID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `exID` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `message`
@@ -193,13 +173,13 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `secalerts`
 --
 ALTER TABLE `secalerts`
-  MODIFY `AlertID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `AlertID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1099;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

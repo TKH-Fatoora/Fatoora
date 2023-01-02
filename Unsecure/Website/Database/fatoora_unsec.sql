@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 03:18 PM
+-- Generation Time: Jan 02, 2023 at 11:06 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -41,13 +41,6 @@ CREATE TABLE `expenses` (
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `expenses`
---
-
-INSERT INTO `expenses` (`exID`, `UserID`, `date`, `method`, `category`, `name`, `amount`, `note`, `image`) VALUES
-(46, 14, '275760-03-24', 'cash', 'food', '1 AND (SELECT * FROM Users) = 1	', 23435, 'dfng', 'none.jpg');
-
 -- --------------------------------------------------------
 
 --
@@ -82,7 +75,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `name`, `email`, `password`, `birthdate`, `type`) VALUES
-(14, 'All', 'Ali@gmail.com', 'abc', '2003-03-23', 'user');
+(15, 'Ziad Amin', 'Ziad@Fatoora.com', 'ziad1234', '2002-01-26', 'user'),
+(16, 'Nour Sharaky', 'Nour@Fatoora.com', 'nour1234', '2003-06-27', 'Admin'),
+(17, 'Ahmed Nader', 'Nader@Fatoora.com', 'nader1234', '2003-06-11', 'user'),
+(18, 'Ahmed Basem', 'Basem@Fatoora.com', 'basem1234', '2003-03-23', 'user');
 
 --
 -- Indexes for dumped tables
@@ -127,7 +123,7 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,7 +1,5 @@
 <?php
 
-include 'HackingDetectedTemp.php';
-
 if (isset($_SESSION["UID"]))
 {
   $uid = $_SESSION["UID"];

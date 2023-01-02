@@ -7,9 +7,10 @@ include 'Templates/HackingDetectedTemp.php';
 // start admin session
 session_start();
 
+// _____________________________________________________________________________
+
 // prevent session hijacking
 @include 'Templates/session_hijacking_prevention.php';
-
 //Reset the variable
 if(isset($_SESSION['selected_user_id'])) { unset($_SESSION['selected_user_id']); }
 
@@ -35,43 +36,44 @@ if(!isset($admin_id)){
   Hacking_Detected("Insufficent Access",$alertuserID,"Unauthorized Access to Admin Users pasge Was Attempted","Insufficent Access",2);
   // redirect user to log in again
    header('location:logout.php');
-};
+}
 
-// Check For CSRF Token
-if (
-  isset($_POST["csrf"]) &&             // Check For CSRF Token From the Form
-  isset($_SESSION["csrf"]) &&          // Check For CSRF Token From the Session
-  isset($_SESSION["csrf-expire"]) &&   // Check For CSRF Token Expiration From the Session
-  $_SESSION["csrf"]==$_POST["csrf"]    // Check IF CLient Token Matches Server Stored Token
-) {
-  // If CSRF token EXPIRED
-  if (time() >= $_SESSION["token-expire"]) {
-    // Exit and Set Notification Token expired
-    $message[] = "Session expired. Please Log in Again.";
-    // Log User Out
-    header('location:logout.php');
-  }
-  else
-  {
-    // Check if User is Logged in and Has an ID
-    if(isset($_SESSION['UID']))
-    {
-      // If so, Store the Attacker UID
-      $alertuserID = $_SESSION['UID'];
-    }
-    else
-    {
-      // if not Set ID to 0
-      $alertuserID = 0;
-    }
-    // Send an Insufficent Access ALert
-    Hacking_Detected("Insufficent Access",$alertuserID,"No CSRF Token in Use to Access page: Admin Users ","Insufficent Access",3);
-  }
 
   // _____________________________________________________________________________
 
   // if the update user button is pressed,
   if(isset($_POST['update_user'])){
+
+    // Check For CSRF Token
+    if (
+      isset($_POST["csrf"]) &&             // Check For CSRF Token From the Form
+      isset($_SESSION["csrf"]) &&          // Check For CSRF Token From the Session
+      isset($_SESSION["csrf-expire"]) &&   // Check For CSRF Token Expiration From the Session
+      $_SESSION["csrf"]==$_POST["csrf"]    // Check IF CLient Token Matches Server Stored Token
+    ) {
+      // If CSRF token EXPIRED
+      if (time() >= $_SESSION["csrf-expire"]) {
+        // Exit and Set Notification Token expired
+        $message[] = "Session expired. Please Log in Again.";
+        // Log User Out
+        header('location:logout.php');
+      }
+    }else
+      {
+        // Check if User is Logged in and Has an ID
+        if(isset($_SESSION['UID']))
+        {
+          // If so, Store the Attacker UID
+          $alertuserID = $_SESSION['UID'];
+        }
+        else
+        {
+          // if not Set ID to 0
+          $alertuserID = 0;
+        }
+        // Send an Insufficent Access ALert
+        Hacking_Detected("Insufficent Access",$alertuserID,"No CSRF Token in Use to Access page: Admin Users ","Insufficent Access",3);
+      }
 
      // fetch the id of the selected user
      $update_id = $_POST['userID'];
@@ -80,7 +82,6 @@ if (
      // update the selected user's privilege from the users table in the database
      mysqli_query($conn, "UPDATE `users` SET type = '$type' WHERE UserID = '$update_id'") or die('query failed');
      $message[] = 'User has been deleted!'; // store notification message
-     header('location:adminUsers.php'); //reloads the updated page
   }
   // _____________________________________________________________________________
   // if the delete user button is pressed,
@@ -92,7 +93,6 @@ if (
      mysqli_query($conn, "DELETE FROM `expenses` WHERE UserID = '$delete_id'") or die('query failed');
      mysqli_query($conn, "DELETE FROM `message` WHERE UserID = '$delete_id'") or die('query failed');
      $message[] = 'User has been deleted!'; // store notification message
-     header('location:adminUsers.php'); //reloads the updated page
   }
 
   // _____________________________________________________________________________
@@ -103,7 +103,7 @@ if (
 
      header('location:adminStatsPerUser.php'); //reloads the updated page
   }
-}
+
 // _____________________________________________________________________________
 
  ?>
@@ -150,7 +150,7 @@ if (
          <p>Username: <span><?php echo htmlspecialchars($fetch_users['name']); ?></span></p>
          <p>Email: <span><?php echo htmlspecialchars($fetch_users['email']); ?></span></p>
          <form class="" action="adminUsers.php" method="post" enctype="multipart/form-data">
-           <input type="hidden" name="token" value="<?php echo htmlspecialchars($_SESSION["csrf"]);?>">
+           <input type="hidden" name="csrf" value="<?php echo htmlspecialchars($_SESSION["csrf"]);?>">
            <span class="sub">User Type:</span>
            <select class="type" name="type" required>
              <option value="user" <?php if ($fetch_users['type'] == 'user' ){?> selected <?php  }?> > user </option>
