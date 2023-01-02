@@ -155,6 +155,7 @@ if (
            <select class="type" name="type" required>
              <option value="user" <?php if ($fetch_users['type'] == 'user' ){?> selected <?php  }?> > user </option>
              <option value="employee" <?php if ($fetch_users['type'] == 'employee' ){?> selected <?php  }?> > employee </option>
+             <option value="employee" <?php if ($fetch_users['type'] == 'security' ){?> selected <?php  }?> > security </option>
              <option value="admin" <?php if ($fetch_users['type'] == 'admin' ){?> selected <?php  }?> > admin </option>
            </select>
            <input type="hidden" name="userID" value="<?php echo htmlspecialchars($fetch_users['UserID']); ?>">
