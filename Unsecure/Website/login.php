@@ -14,17 +14,16 @@ if(isset($_POST['submit'])){
    $email = $_POST['email'];
    $pass = $_POST['password'];
 
-
 // _____________________________________________________________________________
 
    // select all users that have the same email and password that the user just entered from the users table in the databse, if possible
-   $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+   $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die("query failed");
 
    // if the rows returned are more than 0, then:
    if(mysqli_num_rows($select_users) > 0){
+
      // Return an associative array of the user's data
       $row = mysqli_fetch_assoc($select_users);
-
 // _____________________________________________________________________________
       $cookie_name = "uid";
       $cookie_value = $row['UserID'];
@@ -53,7 +52,6 @@ if(isset($_POST['submit'])){
          header('location:employee.php');
       }
 // _____________________________________________________________________________
-
       else{
          $message[] = 'no user found!'; // store notification message
       }
@@ -82,7 +80,7 @@ if(isset($_POST['submit'])){
       <img src="images/avatar.png" alt="">
       <h2>Login</h2>
       <div class="input-group">
-        <input type="email" name="email" id="loginUser" required>
+        <input type="text" name="email" id="loginUser" required>
         <label for="email">Email</label>
       </div>
       <div class="input-group">

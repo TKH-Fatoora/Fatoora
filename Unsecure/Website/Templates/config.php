@@ -4,7 +4,7 @@
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$dbname = "fatoora";
+$dbname = "fatoora_unsec";
 
 // Connection Statment to mysqli Server
 $conn = mysqli_connect($hostname, $username, $password, $dbname) OR die("Couldnt connect to DB" . mysqli_connect_error());

@@ -67,10 +67,10 @@ $user_id = $_SESSION['user_id'];
              ?>
 <!-- _______________________________________________________________________ -->
             <tr class="rowitem">
-              <td class="itemtext"><?php echo htmlspecialchars($expense['name']); ?></td>
-              <td class="itemtext"><?php echo htmlspecialchars($expense['category']); ?></td>
-              <td class="itemtext"><?php echo htmlspecialchars($expense['method']); ?></td>
-              <td class="itemtext"><?php echo htmlspecialchars('$'.$expense['amount']); ?></td>
+              <td class="itemtext"><?php echo $expense['name']; ?></td>
+              <td class="itemtext"><?php echo $expense['category']; ?></td>
+              <td class="itemtext"><?php echo $expense['method']; ?></td>
+              <td class="itemtext"><?php echo '$'.$expense['amount']; ?></td>
             </tr>
 
 <!-- _______________________________________________________________________ -->
@@ -84,7 +84,7 @@ $user_id = $_SESSION['user_id'];
               <td></td>
               <td></td>
               <td><h3>Total</h3></td>
-              <td><h3><?php echo htmlspecialchars('$'.$subTotal); ?></h3></td>
+              <td><h3><?php echo '$'.$subTotal; ?></h3></td>
             </tr>
           </table>
         </div>
