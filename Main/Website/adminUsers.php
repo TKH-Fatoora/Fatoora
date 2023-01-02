@@ -2,6 +2,8 @@
 // connection to databse
 @include 'Templates/config.php';
 
+// Hacking Detected Template
+include 'Templates/HackingDetectedTemp.php';
 // start admin session
 session_start();
 
