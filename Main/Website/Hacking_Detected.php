@@ -19,8 +19,8 @@ else{ // if hacking reason was not set,
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
     <title>Hacking Detected</title>
+    <meta charset="utf-8">
     <!-- stylesheet link -->
     <link rel="stylesheet" href="CSS\Hacking_Detected.css">
     <!-- set content's width according to current screen width -->

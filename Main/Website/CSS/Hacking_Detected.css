@@ -60,7 +60,7 @@ rgba(253, 60, 0, 0.75);
   animation: el1Move 800ms linear infinite;
   width: 84px;
   height: 106px;
-  background: url("https://github.com/BlackStar1991/Pictures-for-sharing-/blob/master/404/bigBoom/404-1.png?raw=true")
+  background: url("../images/404-1.png")
     50% 50% no-repeat;
   z-index: 2;
 }
@@ -72,7 +72,7 @@ rgba(253, 60, 0, 0.75);
   animation: el2Move 800ms linear infinite;
   width: 184px;
   height: 106px;
-  background: url("https://github.com/BlackStar1991/Pictures-for-sharing-/blob/master/404/bigBoom/404-2.png?raw=true")
+  background: url("../images/404-2.png")
     50% 50% no-repeat;
   z-index: 2;
 }
@@ -84,8 +84,7 @@ rgba(253, 60, 0, 0.75);
   animation: el3Move 800ms linear infinite;
   width: 284px;
   height: 106px;
-  background: url("https://github.com/BlackStar1991/Pictures-for-sharing-/blob/master/404/bigBoom/404-3.png?raw=true")
-    50% 50% no-repeat;
+  background: url("../images/404-3.png") 50% 50% no-repeat;
   z-index: 2;
 }
 @keyframes el1Move {
