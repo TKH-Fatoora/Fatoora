@@ -14,8 +14,8 @@ if(isset($_POST['submit'])){
   // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
 
   // fetch the email & password of the user
-   $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
-   $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
+   $email = $_POST['email'];
+   $pass = $_POST['password'];
 
 
 // _____________________________________________________________________________
@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
 
 // _____________________________________________________________________________
       $cookie_name = "uid";
-      $cookie_value = md5($row['UserID']);
+      $cookie_value = $row['UserID'];
       setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 // _____________________________________________________________________________
 

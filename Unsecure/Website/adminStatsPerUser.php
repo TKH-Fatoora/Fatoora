@@ -36,7 +36,7 @@ $selected_user_id = $_SESSION['selected_user_id'];
 
 <!--_______________________________________________________________________  -->
   <section class="statistics">
-    <h1>Statistics for UID: <span class="" ><?php echo htmlspecialchars($selected_user_id)?></span></h1>
+    <h1>Statistics for UID: <span class="" ><?php echo $selected_user_id?></span></h1>
     <div class="container">
 
       <!--_______________________________________________________________________  -->
@@ -59,8 +59,8 @@ $selected_user_id = $_SESSION['selected_user_id'];
         // echo $ctotal;
         ?>
 
-        <input type="hidden" name="" id="category" value="<?php echo htmlspecialchars($category) ?>">
-        <input type="hidden" name="" id="ctotal" value="<?php echo htmlspecialchars($ctotal) ?>">
+        <input type="hidden" name="" id="category" value="<?php echo $category ?>">
+        <input type="hidden" name="" id="ctotal" value="<?php echo $ctotal ?>">
 
         <!--_______________________________________________________________________  -->
 
@@ -90,8 +90,8 @@ $selected_user_id = $_SESSION['selected_user_id'];
           // echo $mtotal;
           ?>
 
-          <input type="hidden" name="" id="method" value="<?php echo htmlspecialchars($method); ?>">
-          <input type="hidden" name="" id="mtotal" value="<?php echo htmlspecialchars($mtotal); ?>">
+          <input type="hidden" name="" id="method" value="<?php echo $method; ?>">
+          <input type="hidden" name="" id="mtotal" value="<?php echo $mtotal; ?>">
 
           <!--_______________________________________________________________________  -->
 

@@ -26,7 +26,7 @@ if(isset($_POST['update_user'])){
    // fetch the id of the selected user
    $update_id = $_POST['userID'];
 
-   $type = mysqli_real_escape_string($conn, $_POST['type']);
+   $type = $_POST['type'];
    // update the selected user's privilege from the users table in the database
    mysqli_query($conn, "UPDATE `users` SET type = '$type' WHERE UserID = '$update_id'") or die('query failed');
    $message[] = 'User has been deleted!'; // store notification message
@@ -95,9 +95,9 @@ if(isset($_POST['stats_user'])){
       <!-- Printing out each user's data and user type -->
       <div class="box">
         <!-- htmlspecialchars prevents against xss attacks -->
-         <p>User id: <span><?php echo htmlspecialchars($fetch_users['UserID']); ?></span></p>
-         <p>Username: <span><?php echo htmlspecialchars($fetch_users['name']); ?></span></p>
-         <p>Email: <span><?php echo htmlspecialchars($fetch_users['email']); ?></span></p>
+         <p>User id: <span><?php echo $fetch_users['UserID']; ?></span></p>
+         <p>Username: <span><?php echo $fetch_users['name']; ?></span></p>
+         <p>Email: <span><?php echo $fetch_users['email']; ?></span></p>
          <form class="" action="adminUsers.php" method="post" enctype="multipart/form-data">
            <span class="sub">User Type:</span>
            <select class="type" name="type" required>
@@ -105,7 +105,7 @@ if(isset($_POST['stats_user'])){
              <option value="employee" <?php if ($fetch_users['type'] == 'employee' ){?> selected <?php  }?> > employee </option>
              <option value="admin" <?php if ($fetch_users['type'] == 'admin' ){?> selected <?php  }?> > admin </option>
            </select>
-           <input type="hidden" name="userID" value="<?php echo htmlspecialchars($fetch_users['UserID']); ?>">
+           <input type="hidden" name="userID" value="<?php echo $fetch_users['UserID']; ?>">
            <input type="submit" class="btn" value="Update" name="update_user">
            <br><input type="submit" class="dlt-btn" value="Delete" name="delete_user">
            <input type="submit" class="btn" value="Statistics" name="stats_user">

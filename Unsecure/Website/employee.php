@@ -66,13 +66,13 @@ if(isset($_POST['delete_message'])){
       <!-- Printing out each user's data and message -->
       <div class="box">
         <!-- htmlspecialchars prevents against xss attacks -->
-        <p>User id: <span><?php echo htmlspecialchars($fetch_message['UserID']); ?></span></p>
-        <p>Email: <span><?php echo htmlspecialchars($fetch_message['email']); ?></span></p>
-        <p>Subject: <span><b><?php echo htmlspecialchars($fetch_message['subject']); ?></b></span></p>
-        <textarea class="content"><?php echo htmlspecialchars($fetch_message['content']); ?></textarea>
+        <p>User id: <span><?php echo $fetch_message['UserID']; ?></span></p>
+        <p>Email: <span><?php echo $fetch_message['email']; ?></span></p>
+        <p>Subject: <span><b><?php echo $fetch_message['subject']; ?></b></span></p>
+        <textarea class="content"><?php echo $fetch_message['content']; ?></textarea>
 
         <form class="" action="employee.php" method="post">
-          <input type="hidden" name="MessageID" value="<?php echo htmlspecialchars($fetch_message['MessageID']); ?>">
+          <input type="hidden" name="MessageID" value="<?php echo $fetch_message['MessageID']; ?>">
           <input type="submit" class="btn" value="Delete" name="delete_message">
         </form>
       </div>

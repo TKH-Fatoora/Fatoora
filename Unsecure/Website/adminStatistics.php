@@ -54,8 +54,8 @@ if(!isset($admin_id)){
         // echo $ctotal;
         ?>
 
-        <input type="hidden" name="" id="category" value="<?php echo htmlspecialchars($category) ?>">
-        <input type="hidden" name="" id="ctotal" value="<?php echo htmlspecialchars($ctotal) ?>">
+        <input type="hidden" name="" id="category" value="<?php echo $category ?>">
+        <input type="hidden" name="" id="ctotal" value="<?php echo $ctotal ?>">
 
         <!--_______________________________________________________________________  -->
 
@@ -85,8 +85,8 @@ if(!isset($admin_id)){
           // echo $mtotal;
           ?>
 
-          <input type="hidden" name="" id="method" value="<?php echo htmlspecialchars($method); ?>">
-          <input type="hidden" name="" id="mtotal" value="<?php echo htmlspecialchars($mtotal); ?>">
+          <input type="hidden" name="" id="method" value="<?php echo $method; ?>">
+          <input type="hidden" name="" id="mtotal" value="<?php echo $mtotal; ?>">
 
           <!--_______________________________________________________________________  -->
 

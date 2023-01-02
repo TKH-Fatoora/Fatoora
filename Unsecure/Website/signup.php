@@ -9,11 +9,11 @@ if(isset($_POST['submit'])){
   // passwords md5 hashing for an extra layer of security for the users
 
   // fetch the username, email, password & confirm password of the user
-   $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
-   $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
-   $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
-   $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
-   $dob = mysqli_real_escape_string($conn, $_POST['DOB']);
+   $name = $_POST['name'];
+   $email = $_POST['email'];
+   $pass = $_POST['password'];
+   $cpass = $_POST['confirmPassword'];
+   $dob =  $_POST['DOB'];
 
  // _____________________________________________________________________________
 

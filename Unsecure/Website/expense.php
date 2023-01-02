@@ -29,12 +29,12 @@ if(isset($_POST['addExpense'])){
    //  mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
 
    // fetch the id, name, price, details, category & image of the selected product
-   $date = mysqli_real_escape_string($conn, $_POST['date']);
-   $method = mysqli_real_escape_string($conn, filter_var($_POST['method'], FILTER_SANITIZE_STRING));
-   $category = mysqli_real_escape_string($conn, filter_var($_POST['category'], FILTER_SANITIZE_STRING));
-   $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
-   $amount = mysqli_real_escape_string($conn, filter_var($_POST['amount'], FILTER_SANITIZE_STRING));
-   $note = mysqli_real_escape_string($conn, filter_var($_POST['note'], FILTER_SANITIZE_STRING));
+   $date =  $_POST['date'];
+   $method = $_POST['method'];
+   $category = $_POST['category'];
+   $name = $_POST['name'];
+   $amount = $_POST['amount'];
+   $note = $_POST['note'];
 
    // __________________________________________________________________________
    // Image Grabbing and Changing the filename

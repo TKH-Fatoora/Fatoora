@@ -27,9 +27,9 @@ if(isset($_POST['submit'])){
   // passwords md5 hashing for an extra layer of security for the users
 
   // fetch the username, email, password & confirm password of the user
-   $name = mysqli_real_escape_string($conn, filter_var($_POST['name'], FILTER_SANITIZE_STRING));
-   $pass = mysqli_real_escape_string($conn, md5(filter_var($_POST['password'], FILTER_SANITIZE_STRING)));
-   $cpass = mysqli_real_escape_string($conn, md5(filter_var($_POST['confirmPassword'], FILTER_SANITIZE_STRING)));
+   $name = $_POST['name'];
+   $pass = $_POST['password'];
+   $cpass = $_POST['confirmPassword'];
    $_SESSION['user_name'] = $name;
 
  // _____________________________________________________________________________
@@ -72,11 +72,11 @@ if(isset($_POST['submit'])){
       <img src="images/avatar.png" alt="">
       <h2>Profile</h2>
       <div class="input-group">
-        <input type="text" name="name" id="loginUser" value="<?php echo htmlspecialchars($current_user["name"]) ?>" required>
+        <input type="text" name="name" id="loginUser" value="<?php echo $current_user["name"] ?>" required>
         <label for="loginUser">Name</label>
       </div>
       <div class="input-group">
-        <input type="email" name="email" id="loginEmail" value="<?php echo htmlspecialchars($current_user["email"]) ?>" readonly>
+        <input type="email" name="email" id="loginEmail" value="<?php echo $current_user["email"] ?>" readonly>
         <label for="loginEmail">Email</label>
       </div>
       <div class="input-group">
@@ -88,7 +88,7 @@ if(isset($_POST['submit'])){
         <label for="loginPassword">Confirm Password</label>
       </div>
       <div class="input-group">
-        <input type="date" name="DOB" id="loginDOB" value="<?php echo htmlspecialchars($current_user["birthdate"]) ?>" readonly>
+        <input type="date" name="DOB" id="loginDOB" value="<?php echo $current_user["birthdate"] ?>" readonly>
         <label for="loginDOB">Date of Birth</label>
       </div>
       <input type="submit" name="submit" value="Update" class="submit-btn"><br>

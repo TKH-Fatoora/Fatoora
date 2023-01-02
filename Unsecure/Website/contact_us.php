@@ -24,9 +24,9 @@ if(isset($_POST['submit'])){
     // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
 
     // fetch the name, email, number & message content of the user
-    $email = mysqli_real_escape_string($conn, filter_var($_POST['email'], FILTER_SANITIZE_STRING));
-    $subject = mysqli_real_escape_string($conn, filter_var($_POST['subject'], FILTER_SANITIZE_STRING));
-    $content = mysqli_real_escape_string($conn, filter_var($_POST['message'], FILTER_SANITIZE_STRING));
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $content = $_POST['message'];
 
 // _____________________________________________________________________________
     // check if a message with the same user info and content already exists in the message table in the database

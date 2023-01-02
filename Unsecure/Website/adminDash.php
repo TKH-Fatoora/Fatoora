@@ -51,7 +51,7 @@ if(!isset($admin_id)){
             $number_of_users = mysqli_num_rows($select_users);
            ?>
            <!-- print out the number of user accounts -->
-           <h3><?php echo htmlspecialchars($number_of_users); ?></h3> <!-- htmlspecialchars prevents against xss attacks -->
+           <h3><?php echo $number_of_users; ?></h3> <!-- htmlspecialchars prevents against xss attacks -->
            <p>Customer Users</p>
         </div>
 <!-- _______________________________________________________________________ -->
@@ -64,7 +64,7 @@ if(!isset($admin_id)){
             $number_of_users = mysqli_num_rows($select_users);
            ?>
            <!-- print out the number of employee accounts -->
-           <h3><?php echo htmlspecialchars($number_of_users); ?></h3> <!-- htmlspecialchars prevents against xss attacks -->
+           <h3><?php echo $number_of_users; ?></h3> <!-- htmlspecialchars prevents against xss attacks -->
            <p>Employee Users</p>
         </div>
 <!-- _______________________________________________________________________ -->
@@ -77,7 +77,7 @@ if(!isset($admin_id)){
             $number_of_admin = mysqli_num_rows($select_admin);
            ?>
            <!-- print out the number of admin accounts -->
-           <h3><?php echo htmlspecialchars($number_of_admin); ?></h3> <!-- htmlspecialchars prevents against xss attacks -->
+           <h3><?php echo $number_of_admin; ?></h3> <!-- htmlspecialchars prevents against xss attacks -->
            <p>Admin Users</p>
         </div>
 <!-- _______________________________________________________________________ -->
@@ -90,7 +90,7 @@ if(!isset($admin_id)){
             $number_of_account = mysqli_num_rows($select_account);
            ?>
            <!-- print out the total number of accounts -->
-           <h3><?php echo htmlspecialchars($number_of_account); ?></h3> <!-- htmlspecialchars prevents against xss attacks -->
+           <h3><?php echo $number_of_account; ?></h3> <!-- htmlspecialchars prevents against xss attacks -->
            <p>Total Accounts</p>
         </div>
 <!-- _______________________________________________________________________ -->
