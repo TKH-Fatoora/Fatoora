@@ -1,14 +1,4 @@
 <?php
-<<<<<<< HEAD
-// Start Session
-session_start();
-
-// Print HAcking Detected
-echo "Hacking_Detected ";
-
-// Get Alert Message From the Session
-echo $_SESSION["HACK"];
-=======
 // starting the session
 session_start();
 
@@ -22,7 +12,6 @@ if (isset($_SESSION["HACK"])) {
 else{ // if hacking reason was not set,
   header("location:logout.php"); // log the user out
 }
->>>>>>> 16f34c97c59c9b08599195a0027643ed65a654e2
  ?>
 
 <!-- _______________________________________________________________________ -->

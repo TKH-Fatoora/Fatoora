@@ -26,8 +26,6 @@ function PasswordComply($mypass)
           // If Password not of length Return a notification
           $message[] = "Password Must be a combination of upper and lower case charcter in addition to numbers and a special charcter";
         }
-
-
     }
     else
     {
