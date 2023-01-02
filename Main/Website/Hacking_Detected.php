@@ -13,9 +13,7 @@ else{ // if hacking reason was not set,
   header("location:logout.php"); // log the user out
 }
  ?>
-
 <!-- _______________________________________________________________________ -->
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
