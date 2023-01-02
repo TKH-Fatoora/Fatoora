@@ -39,9 +39,7 @@ if(!isset($uid)){
     $alertuserID = 0;
   }
   // Send an Insufficent Access ALert
-  Hacking_Detected("Insufficent Access",$alertuserID,"Unauthorized Access Attempt to Authentication pasge","Insufficent Access",2);
-  // redirect user to log in again
-   header('location:logout.php');
+  Hacking_Detected("Insufficent Access",$alertuserID,"Unauthorized Access Attempt to Authentication page","Insufficent Access",2);
 };
 
 // _____________________________________________________________________________
@@ -98,18 +96,19 @@ if(isset($_POST['submit'])){
       // Using the the User Stored Token,and OTP. the Object verifies if the user has access or not
       if ($google2fa->verifyKey($secret_key, $OTP)) {
         // If hass Access
+
         // Reset Failed Attempts
         mysqli_query($conn, "UPDATE `users` SET FailedLogin = 0  WHERE UserID = '$uid'") or die('query failed');
 
   // Log User In Accroding to privilege
   // _____________________________________________________________________________
+        $_SESSION['UID'] = $row['UserID'];
         // if the user is an admin, save his credetials in the session and redirect him to the admin page
         if($row['type'] == 'admin'){
            $_SESSION['admin_id'] = $row['UserID'];
            header('location:adminDash.php');
        }
   // _____________________________________________________________________________
-
         // if the user is an normal user, save his credetials in the session and redirect him to the home page
         elseif($row['type'] == 'user'){
            $_SESSION['user_id'] = $row['UserID'];
@@ -190,8 +189,8 @@ if(isset($_POST['submit'])){
      </div>
      <!-- Buttons Div -->
      <div class="Buttons">
-       <input type="submit" name="Back" value="Back" class="back-btn">
        <input type="submit" name="submit" value="Authenticate" class="submit-btn">
+       <input type="submit" name="Back" value="Back" class="back-btn">
      </div>
      <br><br>
 
