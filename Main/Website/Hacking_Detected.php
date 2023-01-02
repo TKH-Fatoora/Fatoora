@@ -25,9 +25,8 @@ else{ // if hacking reason was not set,
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
   </head>
-
+  
 <!-- _______________________________________________________________________ -->
-
   <body>
     <main class="bl_page404">
       <br><br>
