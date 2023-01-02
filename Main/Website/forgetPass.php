@@ -108,8 +108,8 @@ if(isset($_POST['submit'])){
       </div>
       <!-- Buttons Div -->
       <div class="Buttons">
-        <input type="submit" name="Back" value="Back" class="back-btn">
         <input type="submit" name="Next" value="Next" class="submit-btn">
+        <input type="submit" name="Back" value="Back" class="back-btn">
       </div>
     </form>
   </div>
