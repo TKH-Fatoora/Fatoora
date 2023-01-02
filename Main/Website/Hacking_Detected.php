@@ -38,7 +38,7 @@ else{ // if hacking reason was not set,
       <!-- Hacking detection reason -->
       <p>Reason: <?php echo htmlspecialchars($reason); ?></p>
       <div class="bl_page404__wrapper">
-        <img src="https://github.com/BlackStar1991/Pictures-for-sharing-/blob/master/404/bigBoom/cloud_warmcasino.png?raw=true" alt="cloud_warmcasino.png">
+        <img src="Images/HackingDetected.png" alt="HackingDetected.png">
         <div class="bl_page404__el1"></div>
         <div class="bl_page404__el2"></div>
         <div class="bl_page404__el3"></div>
