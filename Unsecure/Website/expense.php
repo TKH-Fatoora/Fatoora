@@ -10,23 +10,8 @@ $user_id = $_SESSION['user_id'];
 
 // _____________________________________________________________________________
 
-// if user id is not set, then:
-if(!isset($user_id)){
-  // redirect user to log in again
-   header('location:login.php');
-};
-
-// _____________________________________________________________________________
-
-// A function to clean the images file name
-function filter_filename($fname) {
-    // remove illegal file system characters https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words
-    return str_replace(array_merge( array_map('chr', range(0, 31)), array('<', '>', ':', '"', '/', '\\', '|', '?', '*')), '', $fname);
-}
-
 // if the add product button is pressed,
 if(isset($_POST['addExpense'])){
-   //  mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
 
    // fetch the id, name, price, details, category & image of the selected product
    $date =  $_POST['date'];
@@ -47,9 +32,8 @@ if(isset($_POST['addExpense'])){
      // seperating the extension from the temporary file name
      $temp = explode(".", $_FILES["image"]["name"]);
      // renaming the Image
-     $filteredName = filter_filename($name) . '.' . end($temp);
-     //store image size
-     $image_size = $_FILES['image']['size'];
+     $filteredName = $name . '.' . end($temp);
+
    }else {
      $filteredName = 'none.jpg';
    }
@@ -59,16 +43,6 @@ if(isset($_POST['addExpense'])){
    // if the product did not exist, insert all its data into the products table in the database
     $insert_expense = mysqli_query($conn, "INSERT INTO `expenses`(UserID, `date`, method, category, name, amount, note, image) VALUES('$user_id', '$date', '$method', '$category','$name', '$amount', '$note', '$filteredName')") or die('query failed');
  // __________________________________________________________________________
-
-   if(!empty($_FILES["image"]["name"]))
-   {
-     if($image_size > 6000000){ //validate image size (6mb images)
-       $message[] = 'image size is too large!'; // store notification message
-     }else{
-       if(!empty($_FILES["image"]["name"])) move_uploaded_file($_FILES["image"]["tmp_name"], $target . $filteredName);
-       $message[] = 'expense added successfully!'; // store notification message
-     }
-   }
 
 }
 

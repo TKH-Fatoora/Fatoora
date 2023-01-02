@@ -8,14 +8,6 @@ session_start();
 // fetching the value for the admin id
 $admin_id = $_SESSION['admin_id'];
 
-// _____________________________________________________________________________
-
-// if admin id is not set, then:
-if(!isset($admin_id)){
-  // redirect user to log in page again
-   header('location:login.php');
-};
-
  ?>
 
 <!-- _______________________________________________________________________ -->

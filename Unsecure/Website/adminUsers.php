@@ -13,14 +13,6 @@ $admin_id = $_SESSION['admin_id'];
 
 // _____________________________________________________________________________
 
-// if admin id is not set, then:
-if(!isset($admin_id)){
-  // redirect user to log in again
-   header('location:login.php');
-};
-
-// _____________________________________________________________________________
-
 // if the update user button is pressed,
 if(isset($_POST['update_user'])){
    // fetch the id of the selected user

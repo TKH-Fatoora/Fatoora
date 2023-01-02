@@ -10,14 +10,6 @@ $employee_id = $_SESSION['employee_id'];
 
 // _____________________________________________________________________________
 
-// if employee id is not set, then:
-if(!isset($employee_id)){
-  // redirect user to log in again
-   header('location:login.php');
-};
-
-// _____________________________________________________________________________
-
 // if the delete user button is pressed,
 if(isset($_POST['delete_message'])){
    // fetch the id of the selected user

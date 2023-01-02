@@ -7,21 +7,11 @@ session_start();
 
 // fetching the value for the user id
 $user_id = $_SESSION['user_id'];
-
-// _____________________________________________________________________________
-
-// if user id is not set, then:
-if(!isset($user_id)){
-  // redirect user to log in again
-   header('location:login.php');
-};
-
 // _____________________________________________________________________________
 
 
 // of the send button is pressed,
 if(isset($_POST['submit'])){
-    // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
 
     // fetch the name, email, number & message content of the user
     $email = $_POST['email'];

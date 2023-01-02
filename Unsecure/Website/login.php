@@ -9,9 +9,6 @@ session_start();
 
 // if the submit(login) button is pressed,
 if(isset($_POST['submit'])){
-  // These two functions are important for extra security purpose in the signup form:
-  // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
-  // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
 
   // fetch the email & password of the user
    $email = $_POST['email'];
@@ -55,8 +52,6 @@ if(isset($_POST['submit'])){
          $_SESSION['employee_id'] = $row['UserID'];
          header('location:employee.php');
       }
-
-
 // _____________________________________________________________________________
 
       else{

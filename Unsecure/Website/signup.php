@@ -3,10 +3,6 @@
 include 'Templates/config.php';
 
 if(isset($_POST['submit'])){
-  // These two functions are important for extra security purpose in the signup form:
-  // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
-  // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
-  // passwords md5 hashing for an extra layer of security for the users
 
   // fetch the username, email, password & confirm password of the user
    $name = $_POST['name'];

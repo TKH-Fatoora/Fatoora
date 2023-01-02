@@ -5,26 +5,11 @@ include 'Templates/config.php';
 session_start();
 
 
-if(isset($_SESSION["user_id"]))
-{
-  $user_id = $_SESSION['user_id'];
-}
-else if(isset($_SESSION["admin_id"]))
-{
-  $user_id = $_SESSION['admin_id'];
-}else {
-  header('location:login.php');
-}
-
 $selected_user = mysqli_query($conn, "SELECT * FROM `users` WHERE UserID = '$user_id'") or die('query failed');
 
 $current_user = mysqli_fetch_assoc($selected_user);
 
 if(isset($_POST['submit'])){
-  // These two functions are important for extra security purpose in the signup form:
-  // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
-  // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
-  // passwords md5 hashing for an extra layer of security for the users
 
   // fetch the username, email, password & confirm password of the user
    $name = $_POST['name'];
