@@ -19,8 +19,8 @@ else{ // if hacking reason was not set,
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
     <title>Hacking Detected</title>
+    <meta charset="utf-8">
     <!-- stylesheet link -->
     <link rel="stylesheet" href="CSS\Hacking_Detected.css">
     <!-- set content's width according to current screen width -->
@@ -38,7 +38,7 @@ else{ // if hacking reason was not set,
       <!-- Hacking detection reason -->
       <p>Reason: <?php echo htmlspecialchars($reason); ?></p>
       <div class="bl_page404__wrapper">
-        <img src="https://github.com/BlackStar1991/Pictures-for-sharing-/blob/master/404/bigBoom/cloud_warmcasino.png?raw=true" alt="cloud_warmcasino.png">
+        <img src="Images/HackingDetected.png" alt="HackingDetected.png">
         <div class="bl_page404__el1"></div>
         <div class="bl_page404__el2"></div>
         <div class="bl_page404__el3"></div>
