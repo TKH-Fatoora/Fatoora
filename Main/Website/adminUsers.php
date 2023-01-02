@@ -18,20 +18,52 @@ $admin_id = $_SESSION['admin_id'];
 
 // if admin id is not set, then:
 if(!isset($admin_id)){
+  // Check if User is Logged in and Has an ID
+  if(isset($_SESSION['UID']))
+  {
+    // If so, Store the Attacker UID
+    $alertuserID = $_SESSION['UID'];
+  }
+  else
+  {
+    // if not Set ID to 0
+    $alertuserID = 0;
+  }
+  // Send an Insufficent Access ALert
+  Hacking_Detected("Insufficent Access",$alertuserID,"Unauthorized Access to Admin Users pasge Was Attempted","Insufficent Access",2);
   // redirect user to log in again
    header('location:logout.php');
 };
 
+// Check For CSRF Token
 if (
-  isset($_POST["csrf"]) &&
-  isset($_SESSION["csrf"]) &&
-  isset($_SESSION["csrf-expire"]) &&
-  $_SESSION["csrf"]==$_POST["csrf"]
+  isset($_POST["csrf"]) &&             // Check For CSRF Token From the Form
+  isset($_SESSION["csrf"]) &&          // Check For CSRF Token From the Session
+  isset($_SESSION["csrf-expire"]) &&   // Check For CSRF Token Expiration From the Session
+  $_SESSION["csrf"]==$_POST["csrf"]    // Check IF CLient Token Matches Server Stored Token
 ) {
-  // CSRF token EXPIRED
+  // If CSRF token EXPIRED
   if (time() >= $_SESSION["token-expire"]) {
-    exit("Token expired. Please reload form.");
+    // Exit and Set Notification Token expired
+    $message[] = "Session expired. Please Log in Again.";
+    // Log User Out
     header('location:logout.php');
+  }
+  else
+  {
+    // Check if User is Logged in and Has an ID
+    if(isset($_SESSION['UID']))
+    {
+      // If so, Store the Attacker UID
+      $alertuserID = $_SESSION['UID'];
+    }
+    else
+    {
+      // if not Set ID to 0
+      $alertuserID = 0;
+    }
+    // Send an Insufficent Access ALert
+    Hacking_Detected("Insufficent Access",$alertuserID,"No CSRF Token in Use to Access page: Admin Users ","Insufficent Access",3);
   }
 
   // _____________________________________________________________________________
@@ -41,7 +73,7 @@ if (
 
      // fetch the id of the selected user
      $update_id = $_POST['userID'];
-
+     // Get User Type
      $type = mysqli_real_escape_string($conn, $_POST['type']);
      // update the selected user's privilege from the users table in the database
      mysqli_query($conn, "UPDATE `users` SET type = '$type' WHERE UserID = '$update_id'") or die('query failed');
@@ -53,7 +85,7 @@ if (
   if(isset($_POST['delete_user'])){
      // fetch the id of the selected user
      $delete_id = $_POST['userID'];
-     // delete the selected user from the users table in the database
+     // delete the selected user from the users,expenses,messages tables in the database
      mysqli_query($conn, "DELETE FROM `users` WHERE UserID = '$delete_id'") or die('query failed');
      mysqli_query($conn, "DELETE FROM `expenses` WHERE UserID = '$delete_id'") or die('query failed');
      mysqli_query($conn, "DELETE FROM `message` WHERE UserID = '$delete_id'") or die('query failed');
@@ -103,6 +135,7 @@ if (
        $select_users = mysqli_query($conn, "SELECT * FROM `users`") or die('query failed');
        // if more than zero rows were returned, loops over all messages and stores them in an associative array
        if(mysqli_num_rows($select_users) > 0){
+         // Loop over Users
           while($fetch_users = mysqli_fetch_assoc($select_users)){
       ?>
 
@@ -126,15 +159,11 @@ if (
            <input type="submit" class="btn" value="Update" name="update_user">
            <br><input type="submit" class="dlt-btn" value="Delete" name="delete_user">
            <input type="submit" class="btn" value="Statistics" name="stats_user">
-           <!-- <button type="button" name="stats"> <a href="AdminStatsPerUser.php">Statistics</a> </button> -->
          </form>
-
-
-<!-- _______________________________________________________________________ -->
-
       </div>
 
 <!-- _______________________________________________________________________ -->
+      <!-- While Loop End -->
       <?php
          }
       }

@@ -1,4 +1,5 @@
 <?php
+// Starting Session
 if (!isset($_SESSION)) {
   session_start();
 }
@@ -16,8 +17,9 @@ if (!isset($_SESSION)) {
 <header class="header">
     <div class="flex">
 
-      <!-- Title -->
+      <!-- Title & Logo -->
       <div class="logo">
+        <!-- SVG LOGO -->
         <svg class="logo-icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 489.003 489.003" style="enable-background:new 0 0 489.003 489.003;" xml:space="preserve">
           <g>
             <path d="M305.802,156.814c-33.8-19.5-88.4-19.5-122,0s-33.4,51.2,0.4,70.7s88.4,19.5,122,0
@@ -43,15 +45,14 @@ if (!isset($_SESSION)) {
               l278.5,160.8l150.6-87.5c6.6-3.8,17.2-3.8,23.8,0C489.102,331.714,489.202,337.914,482.602,341.714z"/>
           </g>
         </svg>
+        <!-- Title  -->
         <a href="home.php" class="logo-text">Fatoora</a>
-
       </div>
-
-
-
 <!-- _______________________________________________________________________ -->
+      <!-- Navigation bar -->
       <nav class="navbar"></nav>
 
+      <!-- User Icon For Sub Menu -->
       <div class="icons">
         <!-- logged in account menu icon -->
         <div id="user-btn" class="fas fa-user"></div>
@@ -64,12 +65,12 @@ if (!isset($_SESSION)) {
         <p>Name: <span class="acc-info"><?php echo htmlspecialchars($_SESSION['user_name']); ?></span></p>
         <p>Email: <span class="acc-info"><?php echo htmlspecialchars($_SESSION['user_email']); ?></span></p>
 
+        <!-- Options  -->
         <p class="account-options"><a href='Profile.php'>View Account</a> | <a href="logout.php">Log out</a></p>
-
       </div>
-
 <!-- _______________________________________________________________________ -->
     </div>
 </header>
 
+<!-- Navbar Script For Menu Toggling -->
 <script src="Scripts/nav.js" type="text/javascript"></script>

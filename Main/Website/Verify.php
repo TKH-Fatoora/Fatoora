@@ -29,9 +29,12 @@ if(isset($_POST['Verify'])){
       $name = $row["name"];
       $email = $row["email"];
 
+      // Compare the Original VOTP with the new OTP
       if ($VOTPOG == $VOTP)
       {
+        // Set User Account To Verified
         mysqli_query($conn, "UPDATE `users` SET VOTP = '', Verified = 1  WHERE UserID = '$uid'") or die('query failed');
+        // Send a Verfication Acknowledgement Email
         SendEmail($email,$name,"Your Account has Been Verified");
         if ($Vpurp == 'signup')
         {

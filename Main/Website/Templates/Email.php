@@ -7,6 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+// Reusable Function to Send Emails
 function SendEmail($RecepientEmail,$RecepientName,$eContent)
 {
   //Create an instance; passing `true` enables exceptions
@@ -14,7 +15,7 @@ function SendEmail($RecepientEmail,$RecepientName,$eContent)
   try
   {
       //Server settings
-      $mail->SMTPDebug = 0;                        //Enable verbose debug output
+      $mail->SMTPDebug = 0;                        //Disable verbose debug output
       $mail->isSMTP();                             //Send using SMTP
       $mail->Host       = 'smtp.gmail.com';        //Set the SMTP server to send through
       $mail->SMTPAuth   = true;                    //Enable SMTP authentication
@@ -28,15 +29,17 @@ function SendEmail($RecepientEmail,$RecepientName,$eContent)
       $mail->addAddress($RecepientEmail, $RecepientName);  //Add a recipient
       //Content
       $mail->isHTML(true);                         //Set email format to HTML
-      $mail->Subject = 'Account Verification';
-      $mail->Body    = $eContent;
+      $mail->Subject = 'Account Verification';     // Subject
+      $mail->Body    = $eContent;                  // Email Content
 
+      // Sending Email
       $mail->send();
+      // Notifican
       $message[] = 'Email has been sent';
     }
     catch (Exception $e)
     {
-      // Error Handle for Debugging
+      // Error Handle for Debugging Notification
       $message[] = "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
