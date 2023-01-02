@@ -1,28 +1,6 @@
-_________________________________________________________________________________
 
-  _______   __  ___________  ______      ______     _______        __      
- /"     "| /""\("     _   ")/    " \    /    " \   /"      \      /""\     
-(: ______)/    \)__/  \\__/// ____  \  // ____  \ |:        |    /    \    
- \/    | /' /\  \  \\_ /  /  /    ) :)/  /    ) :)|_____/   )   /' /\  \   
- // ___)//  __'  \ |.  | (: (____/ //(: (____/ //  //      /   //  __'  \  
-(:  (  /   /  \\  \\:  |  \        /  \        /  |:  __   \  /   /  \\  \ 
- \__/ (___/    \___)\__|   \"_____/    \"_____/   |__|  \___)(___/    \___)
-                                                                           
-_________________________________________________________________________________
-
-
- /$$$$$$$$         /$$                                           
-| $$_____/        | $$                                           
-| $$    /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$ 
-| $$$$$|____  $$|_  $$_/   /$$__  $$ /$$__  $$ /$$__  $$|____  $$
-| $$__/ /$$$$$$$  | $$    | $$  \ $$| $$  \ $$| $$  \__/ /$$$$$$$
-| $$   /$$__  $$  | $$ /$$| $$  | $$| $$  | $$| $$      /$$__  $$
-| $$  |  $$$$$$$  |  $$$$/|  $$$$$$/|  $$$$$$/| $$     |  $$$$$$$
-|__/   \_______/   \___/   \______/  \______/ |__/      \_______/
-                                                                 
-_________________________________________________________________________________
-                                                                
-<b>Summary:</b>
+<hr>                                                                       
+<h1>Summary:</h1>
 
 Have you ever forgotten what you actually spent throughout your day and felt that your money is vanishing quickly? Well,
 this is exactly why you need to start using Fatoora. Fatoora is a money managing website, where the user inputs every
@@ -39,11 +17,36 @@ Contact Us section. In this report, we will be focusing on the front and backend
 penetration testing activities taken to launch Fatoora’s website. In each section, we will be discussing a phase of the
 software development life cycle.
 
-<b>Team Members:</b>
-- Ahmed Basem - 202000188
-- Ahmed Nader - 202000355
-- Nour Sharaky - 202000149
-- Ziad Amin - 202000056
+<hr>
+<h1>Fatoora’s Functionalities</h1> 
+<ol>
+<li> Login & Signup Forms </li>
+<li>Google Authenticator Support</li>
+<li>Password Reset</li>
+<li>Email Verification</li>
+<li>Password Policy</li>
+<li>Security Controls</li>
+<li>Home Page</li>
+<li>CRUD operations</li>
+<li>File Upload</li>
+<li> Admin Dashboard</li>
+<li> Admin User Management</li>
+<li> Security Alerts</li>
+<li> Hacking Detection</li>
+<li> User Blocking</li>
+<li> Password Hashing</li>
+<li> History</li>
+<li> Data Analysis</li>
+<li> Dynamic Graphs</li>
+</ol>
+<hr>
 
+<h1>Team Members:</h1>
+<ul>
+<li>Ahmed Basem - 202000188</li>
+<li>Ahmed Nader - 202000355</li>
+<li>Nour Sharaky - 202000149</li>
+<li>Ziad Amin - 202000056</li>
+</ul>
 
 
