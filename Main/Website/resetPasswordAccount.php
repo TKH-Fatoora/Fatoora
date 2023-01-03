@@ -21,7 +21,7 @@ if(isset($_POST['Back'])){
 // _____________________________________________________________________________
 
 // On Submit
-if(isset($_POST['submit'])){
+if(isset($_POST['Next'])){
   // These two functions are important for extra security purpose in the signup form:
   // The FILTER_SANITIZE_STRING filter removes tags and remove or encode special characters from a string.
   // mysqli_real_escape_string() function escapes special characters in a string and prevents against sql attacks
